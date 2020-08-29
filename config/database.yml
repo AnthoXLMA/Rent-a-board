@@ -83,3 +83,7 @@ production:
   database: Rent_a_board_production
   username: Rent_a_board
   password: <%= ENV['RENT_A_BOARD_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
