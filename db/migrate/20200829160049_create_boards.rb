@@ -3,7 +3,7 @@ class CreateBoards < ActiveRecord::Migration[6.0]
     create_table :boards do |t|
       t.string :name
       t.integer :size
-      t.name :brand
+      t.string :brand
       t.integer :price
       t.string :contact
 
