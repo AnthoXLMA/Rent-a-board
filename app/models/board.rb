@@ -7,5 +7,5 @@ class Board < ApplicationRecord
   validates :size, inclusion: { in: %w(small medium large) }
   validates :price, numericality: true
   geocoded_by :contact
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_contact?
 end
