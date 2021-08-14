@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RentABoard</title>
+    <title>Rent-a-Board</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,22 @@
     <%= render 'shared/navbar' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+      <div class="container-buttons">
+        <div class="btn btn-primary">
+          <%= link_to "Home", root_path %>
+        </div>
+        <div class="btn btn-warning">
+          <%= link_to "Add your board", new_board_path %>
+        </div>
+        <div class="btn btn-primary">
+          <%= link_to "Trouve ta planche", boards_path %>
+        </div>
+      </div>
     <%= yield %>
+    <div class="bg">
+      <%= image_tag ("https://images.unsplash.com/photo-1515541324332-7dd0c37426e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1407&q=80")%>
+    </div>
   </body>
+    <%= render 'shared/logo' %>
+    <%= render 'shared/footer' %>
 </html>
