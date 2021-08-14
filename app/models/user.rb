@@ -2,10 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :boards
-  has_many :bookings
-  has_many :reviews
-
-  has_many :board_requests, through: :boards, source: :bookings
+  # has_many :board_requests, through: :boards, source: :bookings
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

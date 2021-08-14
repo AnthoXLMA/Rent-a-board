@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_023911) do
+ActiveRecord::Schema.define(version: 2021_08_14_092638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(version: 2021_08_13_023911) do
     t.string "description"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id"
+    t.bigint "supplier_id", null: false
+    t.index ["supplier_id"], name: "index_boards_on_supplier_id"
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -57,9 +61,21 @@ ActiveRecord::Schema.define(version: 2021_08_13_023911) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "contact"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +94,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_023911) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "boards", "suppliers"
+  add_foreign_key "boards", "users"
 end

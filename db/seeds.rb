@@ -2,6 +2,7 @@
 puts "cleaning DB"
 Booking.delete_all
 Board.delete_all
+Supplier.delete_all
 User.delete_all
 
 puts 'Creating users...'
@@ -23,7 +24,6 @@ jean = User.new(
   phone_number: "1234567890"
   )
 jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
-
 jean.save!
 
 bill = User.new(
@@ -36,21 +36,27 @@ bill = User.new(
 bill.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
 bill.save!
 
+puts 'Creating suppliers...'
+quiksilver = Supplier.new(
+  name: "Quiksilver",
+  contact: "Rio De Janeiro"
+  )
+quiksilver.save!
 
 # Seeding Trees
 puts 'Creating boards...'
 longboard = Board.new(
   name: "Longboard",
   size: "long",
-  brand: "quicksilver",
+  brand: "quiksilver",
   price: 5,
   contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
-  user_id: bill.id
+  user_id: bill.id,
+  supplier_id: quiksilver.id
   )
 longboard.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 longboard.save!
-
 puts 'Finished!'
 
 # Seeding Rentals
@@ -88,32 +94,5 @@ puts 'Finished!'
 #   new_user.save!
 # end
 
-#Seeding Trees
-# 5.times do
-#   new_tree = Tree.new(
-#     name: Faker::Name.name,
-#     user_id: Faker::IDNumber.valid,
-#     description: Faker::Lorem.paragraph(sentence_count: 2),
-#     species: Faker::JapaneseMedia::DragonBall.character,
-#   )
-#   new_tree.save!
-# end
 
-
-# # Seed pour Tree
-# puts 'Creating trees...'
-# new_tree = Tree.new(name: "Bonzaï", description: "cute little tree", user_id:"")
-# new_tree.save!
-
-# puts 'Creating rentals...'
-# new_rental = Rental.new(start_on: "20200304", end_on:"20200312", total_price: "230")
-# new_rental.save!
-
-# Seeding Trees
-# puts 'Creating rentals...'
-# baobab = Tree.new(name: "Baobab")
-# baobab.save!
-# cactus = Tree.new(name: "Cactus")
-# cactus.save!
-# puts 'Finished!'
 puts 'Finished!'

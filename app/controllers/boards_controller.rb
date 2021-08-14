@@ -5,13 +5,16 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @board.save
   end
 
   def create
+    @user = current_user
+    @my_boards = []
     @board = Board.new(board_params)
-    @board.user = current_user
+    @my_boards << @board
     if @board.save
-      redirect_to owner_boards_path
+        redirect_to boards_path
     else
       render :new
     end
@@ -19,5 +22,11 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+  end
+
+  private
+
+  def board_params
+    params.require(:board).permit(:name, :size, :brand, :price, :contact, :description)
   end
 end
