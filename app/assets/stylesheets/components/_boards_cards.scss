@@ -1,7 +1,45 @@
 .boards-cards {
   width:300px;
-  height:400px;
-  background-color:#d8d8d8;
+  height:450px;
+  background-color:#FFFF;
+  box-shadow: 2px 2px 10px 2px grey;
   border-radius:20px 20px 20px 20px;
-  padding:20px;
+  // padding:20px;
+  margin-bottom:10px;
+  margin-top:5px;
+  // margin-right:5px;
+  // margin-left:5px;
+  img {
+    width:100px;
+    height:200px;
+  }
+  li {
+
+  }
+  .user-infos {
+    border-radius:20px 20px 0px 0px;
+    padding:20px;
+    display:flex;
+    background-color:grey;
+    color:white;
+    font-family:'Changa';
+    img {
+      margin-left:30px;
+      height:100px;
+    }
+  }
+  .board-infos {
+    display:flex;
+    margin-top:20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    .board-details {
+      padding:10px;
+    }
+    .board-photo {
+      img {
+        width:100px;
+      }
+    }
+  }
 }

@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: [:show]
   def index
+    @user = current_user
     @boards = Board.all
   end
 
@@ -10,11 +12,10 @@ class BoardsController < ApplicationController
 
   def create
     @user = current_user
-    @my_boards = []
     @board = Board.new(board_params)
-    @my_boards << @board
+    @board.user = @user
     if @board.save
-        redirect_to boards_path
+      redirect_to boards_path(@boards)
     else
       render :new
     end
@@ -26,7 +27,11 @@ class BoardsController < ApplicationController
 
   private
 
+  def set_board
+    @board = Board.find(params[:id])
+  end
+
   def board_params
-    params.require(:board).permit(:name, :size, :brand, :price, :contact, :description)
+    params.require(:board).permit(:name, :size, :brand, :price, :contact, :description, :supplier_id, :address, :user_id)
   end
 end
