@@ -1,6 +1,7 @@
 class Board < ApplicationRecord
   belongs_to :user
-  belongs_to :supplier
+  # belongs_to :supplier
+
   has_many :reviews
   has_and_belongs_to_many :bookings, join_table: 'boards_orders'
 
@@ -16,6 +17,7 @@ class Board < ApplicationRecord
   # validates :description, length: { maximum: 500 }
   # validates :size, inclusion: { in: %w(small medium large) }
   # validates :price, numericality: true
-  # geocoded_by :contact
-  # after_validation :geocode, if: :will_save_change_to_contact?
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

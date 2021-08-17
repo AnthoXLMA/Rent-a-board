@@ -1,3 +1,9 @@
+.buttons {
+  display:flex;
+  margin-right:auto;
+  margin-left:auto;
+}
+
 .btn {
   width:300px;
   a {
@@ -8,12 +14,16 @@
 
 .btn-primary {
   font-family: 'Nanum Gothic';
-}
-
-.btn-warning {
-  font-family: 'Nanum Gothic';
   }
 }
+.btn-warning {
+  width:110px;
+  margin-right:auto;
+  margin-left:auto;
+  margin-top:23px;
+  font-family: 'Nanum Gothic';
+  }
+
 
 // .btn-ghost {
 //   color: #4A4A4A;
