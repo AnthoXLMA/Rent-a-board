@@ -14,7 +14,7 @@
           <%= board.user.email %><br>
         </div>
         <div class="user-photo">
-          <%= image_tag board.user.photo %><br>
+          <%= cl_image_tag @user.avatar.attach(params[:avatar]) %><br>
         </div>
       </div>
       <div class="board-infos">
@@ -24,6 +24,9 @@
           <%= board.price %><br>
           <%= board.description %><br>
         </div>
+          <div class="board-photo">
+            <%= cl_image_tag board.picture.attach(params[:picture]) %><br>
+          </div>
       </div>
       <div class="buttons">
         <div class="btn btn-warning">
