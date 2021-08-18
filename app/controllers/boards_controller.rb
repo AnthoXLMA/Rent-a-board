@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
   def index
     @user = current_user
     @boards = Board.all
+    @user.avatar = @user
   end
 
   def new
@@ -14,11 +15,8 @@ class BoardsController < ApplicationController
     @user = current_user
     @board = Board.new(board_params)
     @board.user = @user
-    if @board.save
-      redirect_to boards_path(@boards)
-    else
-      render :new
-    end
+    @board.save
+    redirect_to boards_path(@boards)
   end
 
   def show
@@ -32,6 +30,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:name, :size, :brand, :price, :contact, :description, :supplier_id, :address, :user_id)
+    params.require(:board).permit(:name, :size, :brand, :price, :contact,
+    :description, :supplier_id, :address, :user_id, :picture)
   end
 end
