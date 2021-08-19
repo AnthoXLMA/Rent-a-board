@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
     @user = current_user
     @board = Board.new(board_params)
     @board.user = @user
+    @board.picture = @board_picture
     @board.save
     redirect_to boards_path(@boards)
   end
