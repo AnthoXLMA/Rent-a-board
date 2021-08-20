@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @user = user_current
     @users = User.all
-    @user.avatar = @user
+    @user.photo = @user
   end
 
   def show

@@ -14,9 +14,10 @@
             <%= board.user.email %><br>
           </div>
           <div class="user-photo">
-            <img style="background-image: url('<%= cl_image_path @user.photo.key %>')" ><br>
+            <img style="background-image: url('<%= cl_image_path board.user.photo.key %>')" ><br>
           </div>
         </div>
+          <hr style="width:90%", size="5", color=black>
         <div class="board-infos">
           <div class="board-details">
             <a><%= board.name %><br></a>

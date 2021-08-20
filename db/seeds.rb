@@ -14,7 +14,7 @@ antho = User.new(
   password: "password",
   phone_number: "0123456789",
   )
-antho.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+antho.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/jack.jpeg')), filename: 'jack.jpeg')
 antho.save!
 
 jean = User.new(
@@ -25,7 +25,7 @@ jean = User.new(
   password: "password",
   phone_number: "1234567890",
   )
-jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/zidane.jpeg')), filename: 'zidane.jpeg')
 jean.save!
 
 jorge = User.new(
@@ -36,7 +36,7 @@ jorge = User.new(
   password: "password",
   phone_number: "0023456789",
   )
-jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
 jorge.save!
 
 puts 'Creating suppliers...'
