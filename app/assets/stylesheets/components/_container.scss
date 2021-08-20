@@ -17,3 +17,45 @@
     grid-gap: 20px;
   }
 }
+
+.container-show-user {
+  width:1400px;
+  height:auto;
+  background-color: blue;
+  margin-right:auto;
+  margin-left:auto;
+  display:flex;
+  justify-content:space-between;
+  .container-user-infos {
+    background-color: white;
+    width:500px;
+    height: 700px;
+    margin-left:20px;
+    margin-top:10px;
+    padding:20px;
+  }
+  .container-all-boards {
+    background-color:grey;
+    width:850px;
+    height:auto;
+    margin-right:20px;
+    margin-top:auto;
+    margin-bottom:auto;
+    display:grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 5px;
+    grid-auto-rows: minmax(10px, auto);
+    .boards-cards {
+      margin-left:10px;
+      margin-top:10px;
+      padding:10px;
+      width:400px;
+      .image-sizing {
+      img {
+        width:70%;
+        background-size:cover;
+        }
+      }
+    }
+  }
+}
