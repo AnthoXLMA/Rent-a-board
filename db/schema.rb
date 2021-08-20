@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_233706) do
     t.bigint "user_id"
     t.bigint "supplier_id"
     t.string "address"
-    t.string "picture"
+    # t.string "picture"
     t.index ["supplier_id"], name: "index_boards_on_supplier_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end

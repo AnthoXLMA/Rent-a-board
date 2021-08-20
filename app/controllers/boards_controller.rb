@@ -1,9 +1,12 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
+  # before_action :set_board, only: [:show, :index]
   def index
     @user = current_user
     @boards = Board.all
-    @user.avatar = @user
+    # @user_avatar = @user.photo
+    @board_photo = @boards.each do |board|
+      board.photo
+    end
   end
 
   def new
@@ -14,8 +17,9 @@ class BoardsController < ApplicationController
   def create
     @user = current_user
     @board = Board.new(board_params)
+    @board_photo = @board.photo
     @board.user = @user
-    @board.picture = @board_picture
+    # @board.photo = @board.photo.attach(io: File.open(Rails.root.join('db/fixtures/')), filename: '')
     @board.save
     redirect_to boards_path(@boards)
   end
@@ -32,6 +36,6 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:name, :size, :brand, :price, :contact,
-    :description, :supplier_id, :address, :user_id, :picture)
+    :description, :supplier_id, :address, :user_id, :photo)
   end
 end

@@ -5,38 +5,38 @@
 <div class="container-body">
   <div class="index-boards-cards">
     <% @boards.each do |board| %>
-    <div class="boards-cards">
-      <div class="user-infos">
-        <div class="user-details">
-          <%= board.user.first_name %><br>
-          <%= board.user.location %><br>
-          <%= board.user.phone_number %><br>
-          <%= board.user.email %><br>
-        </div>
-        <div class="user-photo">
-          <%= cl_image_tag @user.avatar.attach(params[:avatar]) %><br>
-        </div>
-      </div>
-      <div class="board-infos">
-        <div class="board-details">
-          <%= board.name %><br>
-          <%= board.brand %><br>
-          <%= board.price %><br>
-          <%= board.description %><br>
-        </div>
-          <div class="board-photo">
-            <%= cl_image_tag board.picture.attach(params[:picture]) %><br>
+      <div class="boards-cards">
+        <div class="user-infos">
+          <div class="user-details">
+            <%= board.user.first_name %><br>
+            <%= board.user.location %><br>
+            <%= board.user.phone_number %><br>
+            <%= board.user.email %><br>
           </div>
-      </div>
-      <div class="buttons">
-        <div class="btn btn-warning">
-          <a>Voir plus</a>
+          <div class="user-photo">
+            <img style="background-image: url('<%= cl_image_path @user.photo.key %>')" ><br>
+          </div>
         </div>
-        <div class="btn btn-warning">
-          <a>Contact</a>
+        <div class="board-infos">
+          <div class="board-details">
+            <%= board.name %><br>
+            <%= board.brand %><br>
+            <%= board.price %><br>
+            <%= board.description %><br>
+          </div>
+          <div class="board-photo">
+            <img style="background-image: url('<%= cl_image_path board.photo.key %>')"><br>
+          </div>
         </div>
-      </div>
-      </div>
-    <% end %>
+        <div class="buttons">
+          <div class="btn btn-warning">
+            <a>Voir plus</a>
+          </div>
+          <div class="btn btn-warning">
+            <a>Contact</a>
+          </div>
+        </div>
+        </div>
+      <% end %>
   </div>
 </div>
