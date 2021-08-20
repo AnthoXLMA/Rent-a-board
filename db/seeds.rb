@@ -53,7 +53,7 @@ longboard = Board.new(
   size: "long",
   brand: "quiksilver",
   price: 5,
-  contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
+  address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jorge.id,
   supplier_id: quiksilver.id
@@ -67,7 +67,7 @@ fusee = Board.new(
   size: "short",
   brand: "quiksilver",
   price: 5,
-  contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
+  address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,
   supplier_id: quiksilver.id
@@ -80,7 +80,7 @@ shortythug = Board.new(
   size: "short",
   brand: "quiksilver",
   price: 5,
-  contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
+  address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: antho.id,
   supplier_id: quiksilver.id
@@ -93,7 +93,7 @@ gabrielshark = Board.new(
   size: "long",
   brand: "quiksilver",
   price: 5,
-  contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
+  address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: antho.id,
   supplier_id: quiksilver.id
@@ -106,7 +106,7 @@ johndoo = Board.new(
   size: "long",
   brand: "quiksilver",
   price: 5,
-  contact: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
+  address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,
   supplier_id: quiksilver.id

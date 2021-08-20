@@ -19,10 +19,12 @@
         </div>
         <div class="board-infos">
           <div class="board-details">
-            <%= board.name %><br>
-            <%= board.brand %><br>
-            <%= board.price %><br>
-            <%= board.description %><br>
+            <a><%= board.name %><br></a>
+            <a><%= board.brand %><br></a>
+            <a><%= board.size %><br></a>
+            <a><%= board.supplier_id %><br></a>
+            <a><%= board.price %>€<br></a>
+            <a><%= board.address %><br></a>
           </div>
           <div class="board-photo">
             <img style="background-image: url('<%= cl_image_path board.photo.key %>')"><br>
@@ -30,10 +32,10 @@
         </div>
         <div class="buttons">
           <div class="btn btn-warning">
-            <a>Voir plus</a>
+            <%= link_to "Voir plus", board_path(board) %>
           </div>
           <div class="btn btn-warning">
-            <a>Contact</a>
+            <%= link_to "Contact", board.user %>
           </div>
         </div>
         </div>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # devise_for :users
   root to: 'pages#home'
   devise_scope :user do
     delete '/users/sign_out' => 'devise/sessions#destroy'
@@ -11,11 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-      resources :boards, only: [:index, :create]
+      resources :boards, only: [:index, :create, :show]
     end
 
   resources :boards, only: [:index, :show, :new, :create] do
-    resources :users
+    resources :users, only: [:index, :show]
   end
 
   resources :bookings, only: [:index, :new, :create]

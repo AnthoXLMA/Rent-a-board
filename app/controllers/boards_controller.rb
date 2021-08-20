@@ -3,7 +3,14 @@ class BoardsController < ApplicationController
   def index
     @user = current_user
     @boards = Board.all
-    # @user_avatar = @user.photo
+    @board = @boards.each do |board|
+      board
+    end
+    @surfers = User.all
+    @surfer = @surfers.each do |surfer|
+      surfer
+    end
+    @surfman = @surfer.find(params[:id])
     @board_photo = @boards.each do |board|
       board.photo
     end
@@ -19,7 +26,6 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board_photo = @board.photo
     @board.user = @user
-    # @board.photo = @board.photo.attach(io: File.open(Rails.root.join('db/fixtures/')), filename: '')
     @board.save
     redirect_to boards_path(@boards)
   end

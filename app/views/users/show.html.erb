@@ -1,0 +1,22 @@
+<div class="container-show-user">
+  <div class="container-user-infos">
+    <%= @user.first_name %><br>
+    <%= @user.location %><br>
+    <%= @user.phone_number %><br>
+    <%= @user.email %><br>
+  </div>
+  <div class="container-all-boards">
+    <% @user.boards.each do |user_board| %>
+    <div class="boards-cards">
+    <%= user_board.name %>
+    <%= user_board.description %>
+    <%= user_board.address %>
+    <%= user_board.size %>"
+    <%= user_board.price %>€
+      <div class="image-sizing">
+        <img src="<%= cl_image_path user_board.photo.key %>">
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
