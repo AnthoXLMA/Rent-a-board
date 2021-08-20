@@ -1,6 +1,6 @@
 .boards-cards {
   width:330px;
-  height:450px;
+  height:550px;
   background-color:#FFFF;
   box-shadow: 2px 2px 10px 2px grey;
   border-radius:2px 2px 2px 2px;
@@ -43,9 +43,10 @@
     }
     .board-photo {
       img {
-        width:220px;
-        height:200px;
-        background-size:cover;
+        border:thin;
+        width:200px;
+        height:270px;
+        background-size:contain;
       }
     }
   }
