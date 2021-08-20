@@ -9,10 +9,6 @@
   margin-top:5px;
   // margin-right:5px;
   // margin-left:5px;
-  img {
-    width:100px;
-    height:200px;
-  }
   li {
 
   }
@@ -23,9 +19,14 @@
     background-color:grey;
     color:white;
     font-family:'Changa';
-    img {
+    .user-photo {
       margin-left:30px;
-      height:100px;
+      height:50px;
+      img {
+        width:110px;
+        height:110px;
+        background-size:cover;
+      }
     }
   }
   .board-infos {
@@ -38,7 +39,9 @@
     }
     .board-photo {
       img {
-        width:100px;
+        width:120px;
+        height:200px;
+        background-size:cover;
       }
     }
   }

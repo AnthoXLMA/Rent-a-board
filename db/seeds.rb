@@ -14,7 +14,7 @@ antho = User.new(
   password: "password",
   phone_number: "0123456789",
   )
-antho.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+antho.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
 antho.save!
 
 jean = User.new(
@@ -25,7 +25,7 @@ jean = User.new(
   password: "password",
   phone_number: "1234567890",
   )
-jean.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
 jean.save!
 
 jorge = User.new(
@@ -36,7 +36,7 @@ jorge = User.new(
   password: "password",
   phone_number: "0023456789",
   )
-jorge.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
+jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/avatar.png')), filename: 'avatar.png')
 jorge.save!
 
 puts 'Creating suppliers...'
@@ -58,7 +58,7 @@ longboard = Board.new(
   user_id: jorge.id,
   supplier_id: quiksilver.id
   )
-longboard.picture.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
+longboard.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 longboard.save!
 
 
@@ -72,7 +72,7 @@ fusee = Board.new(
   user_id: jean.id,
   supplier_id: quiksilver.id
   )
-fusee.picture.attach(io: File.open(Rails.root.join('db/fixtures/planche-de-surf-evolutive-ms-easy-pony.jpg')), filename: 'longboard.jpg')
+fusee.photo.attach(io: File.open(Rails.root.join('db/fixtures/planche-de-surf-evolutive-ms-easy-pony.jpg')), filename: 'longboard.jpg')
 fusee.save!
 
 shortythug = Board.new(
@@ -85,7 +85,7 @@ shortythug = Board.new(
   user_id: antho.id,
   supplier_id: quiksilver.id
   )
-shortythug.picture.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
+shortythug.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 shortythug.save!
 
 gabrielshark = Board.new(
@@ -98,7 +98,7 @@ gabrielshark = Board.new(
   user_id: antho.id,
   supplier_id: quiksilver.id
   )
-gabrielshark.picture.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
+gabrielshark.photo.attach(io: File.open(Rails.root.join('db/fixtures/PLANCHEDESURFENMOUSSE6.0HOA_1080x.png')), filename: 'longboard.jpg')
 gabrielshark.save!
 
 johndoo = Board.new(
@@ -111,7 +111,7 @@ johndoo = Board.new(
   user_id: jean.id,
   supplier_id: quiksilver.id
   )
-johndoo.picture.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
+johndoo.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 johndoo.save!
 
 puts 'Finished!'
