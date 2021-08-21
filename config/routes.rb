@@ -10,14 +10,18 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
+    resources :bookings, only: [:index, :new, :create]
+  end
+
+  resources :bookings, only: [:index, :new, :create]
+
+  resources :users, only: [:show] do
       resources :boards, only: [:index, :create, :show]
     end
 
   resources :boards, only: [:index, :show, :new, :create] do
     resources :users, only: [:index, :show]
   end
-
-  resources :bookings, only: [:index, :new, :create]
 
   namespace :customers do
     resources :boards, only: [:index]

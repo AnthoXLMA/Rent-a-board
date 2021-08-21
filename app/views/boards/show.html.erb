@@ -1,11 +1,22 @@
-<div>
-  <h1>Board</h1>
+<div class="container-body">
+  <div class="container-one-board">
+    <h1><%= @board.name %><br></h1>by <%= link_to @board.user.first_name, @board.user %>
+    <%= cl_image_tag @board.photo.key %>
+    <div class="board-details">
+      <a><%= @board.brand %><br></a>
+      <a><%= @board.size %><br></a>
+      <a><%= @board.supplier_id %><br></a>
+      <a><%= @board.price %>€<br></a>
+      <a><%= @board.address %><br></a>
+    </div>
+  </div>
+  <div class="container">
+  <%= simple_form_for [@board, @booking] do |f| %>
+    <div class="container_one">
+      <%= f.input :start_on, as: :date %>
+      <%= f.input :end_on, as: :date %>
+      <%= f.submit "Book Now", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
-
-<div class="button">
-  <%= link_to "Home", "/" %>
-</div>
-
-<div class="button">
-  <%= link_to "Add your board", new_board_path %>
 </div>

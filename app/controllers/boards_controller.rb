@@ -31,7 +31,17 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @bookings = Booking.all
+    @booking = Booking.new
     @board = Board.find(params[:id])
+    @surfboard = Board.where(id: :user_id)
+    # @booking.board = @board
+    # @booking.total_price = ((@booking.end_on - @booking.start_on) / 86_400) * @board.price
+    if @booking.save
+      redirect_to boards_path(board)
+    else
+      render 'boards/show'
+    end
   end
 
   private

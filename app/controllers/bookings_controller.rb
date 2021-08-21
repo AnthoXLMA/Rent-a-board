@@ -4,22 +4,23 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Board.find(params[:board_id])
+    @board = Board.find(params[:id])
     @booking = Booking.new
   end
 
   def create
+    # @booking.user = current_user
+    @boards = Board.all
+    @board = Board.find(params[:id])
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    @board = Board.find(params[:board_id])
-    @booking.total_price = ((@booking.end_on - @booking.start_on) / 86_400) * @board.price
     @booking.board = @board
-
+    @booking.total_price = ((@booking.end_on - @booking.start_on) / 86_400) * @board.price
     if @booking.save
-      redirect_to bookings_path
+      redirect_to board_path(@board)
     else
-      render :new
+      render 'boards/show'
     end
+
   end
 
   private
