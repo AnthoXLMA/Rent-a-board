@@ -4,11 +4,20 @@ class UsersController < ApplicationController
     @user = user_current
     @users = User.all
     @user.photo = @user
+    @markers = @users.geocoded.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        image_url: helpers.asset_url('mapbox-marker-icon-green.svg')
+      }
+    end
   end
 
   def show
     @user = User.find(params[:id])
     @boards = Board.all
+    @board = Board.find(params[:id])
     @board_photo = @boards.each do |board|
       board.photo
     end
@@ -30,7 +39,11 @@ class UsersController < ApplicationController
   # def logout
   # end
   private
-  def set_board
+  def set_user
     @User = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :location, :email)
   end
 end

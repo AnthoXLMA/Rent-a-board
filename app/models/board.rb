@@ -3,7 +3,7 @@ class Board < ApplicationRecord
   # belongs_to :supplier
 
   has_many :reviews
-  has_and_belongs_to_many :bookings, join_table: 'boards_orders'
+  has_and_belongs_to_many :bookings, join_table: 'board_bookings'
   has_one_attached :photo
 
   # scope :in_print, -> { where(out_of_print: false) }

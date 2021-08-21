@@ -4,18 +4,32 @@
     <%= @user.location %><br>
     <%= @user.phone_number %><br>
     <%= @user.email %><br>
+    <div class="user-photo">
+      <img style="background-image: url('<%= cl_image_path @user.photo.key %>')" ><br>
+    </div>
+    <div class="container-map">
+      <div id="map" style="width:400px" position="fixed"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
   <div class="container-all-boards">
     <% @user.boards.each do |user_board| %>
     <div class="boards-cards">
-    <%= user_board.name %>
-    <%= user_board.description %>
-    <%= user_board.address %>
-    <%= user_board.size %>"
-    <%= user_board.price %>€
+      <%= user_board.name %>
+      <%= user_board.description %>
+      <%= user_board.address %>
+      <%= user_board.size %>"
+      <%= user_board.price %>€
       <div class="image-sizing">
         <img src="<%= cl_image_path user_board.photo.key %>">
       </div>
+        <div class="buttons">
+          <div class="btn btn-warning">
+            <%= link_to "Réserver", user_board %>
+          </div>
+        </div>
     </div>
     <% end %>
   </div>
