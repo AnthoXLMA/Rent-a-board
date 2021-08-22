@@ -1,9 +1,9 @@
 {
   "apps": [
     {
-      "app_id": "app_6222ce79-759f-4913-8437-9ae440f72587",
+      "app_id": "app_b3d14047-7e80-4ba3-9b74-18eae414fe06",
       "org_id": "user_90e2a040-45cf-4221-b9cc-e7b67bff23e3",
-      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_6222ce79-759f-4913-8437-9ae440f72587.git",
+      "deploy_url": "https://push-n2-par-clevercloud-customers.services.clever-cloud.com/app_b3d14047-7e80-4ba3-9b74-18eae414fe06.git",
       "name": "Rent-a-board",
       "alias": "Rent-a-board"
     }
