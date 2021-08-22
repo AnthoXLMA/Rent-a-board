@@ -6,14 +6,14 @@ class BoardsController < ApplicationController
     @board = @boards.each do |board|
       board
     end
-    @surfers = User.all
-    @surfer = @surfers.each do |surfer|
-      surfer
-    end
-    @surfman = @surfer.find(params[:id])
-    @board_photo = @boards.each do |board|
-      board.photo
-    end
+    # @surfers = User.all
+    # @surfer = @surfers.each do |surfer|
+    #   surfer
+    # end
+    # @surfman = @surfer.find(params[:id])
+    # @board_photo = @boards.each do |board|
+    #   board.photo
+    # end
   end
 
   def new
