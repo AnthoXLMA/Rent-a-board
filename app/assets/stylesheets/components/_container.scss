@@ -31,7 +31,7 @@
         background-size:cover;
       }
     }
-  }
+}
 
 .container-show-user {
   width:1400px;
@@ -80,6 +80,21 @@
         background-size:cover;
         }
       }
+    }
+  }
+}
+.container-booking {
+  margin-top:200px;
+  .container-bookings-index {
+    margin-top:80px;
+    margin-left:100px;
+    width:1200px;
+    height:1000px;
+    border:solid;
+    background-color: #F7F7F7;
+    .boards-cards {
+      width:100px;
+      height:300px;
     }
   }
 }

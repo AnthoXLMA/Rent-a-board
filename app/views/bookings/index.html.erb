@@ -1,35 +1,26 @@
-<div class="title_text">
-  <p>Your bookings</p>
-</div>
-
-<div class="all_container center">
-  <div class="cards rent">
-    <% @bookings.each do |booking| %>
-        <div class="tree_name d-flex">
-          <h1 class=" card_category_show rent"> <%= booking.board.name %></h1>
-        </div>
-      <div class="cards card card_index">
-          <div class="rent">
-            <h4><%= booking.start_on.strftime("%d %m %Y") %></h4>
-            <h4><i class="fas fa-angle-double-down"></i></h4>
-            <h4><%= booking.end_on.strftime("%d %m %Y") %></h4>
-            <br>
-            <h4><i class="fas fa-user"></i> <%= booking.user.first_name %> <%= booking.user.last_name %></h4>
-            <h4><i class="fas fa-hand-holding-usd"></i> <%= booking.total_price %>$</h4>
-            <br>
-            <div>
-              <% if booking.status == "accepted" %>
-                <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>
-              <% elsif booking.status == "refused" %>
-                <h2 style="background-color: #CD4A49 opacity:0.9"> <%= booking.status %></h2>
-              <% else %>
-                <h2><%= booking.status %></h2>
-              <% end %>
-            </div>
-          </div>
-        <div class="card-category" style="background-image: url('<%= cl_image_path booking.board.photo.key %>')"></div>
-            <%#= link_to board.name, board_path(board), class: "link_board" %>
-      </div>
+<div class="container-booking">
+  <p>My bookings</p>
+    <%= @bookings.each do |booking| %>
+    <%= booking.user.first_name %>
     <% end %>
+  <div class="container-bookings-index">
+    <%= @bookings.each do |booking| %>
+      <div class="boards-cards">
+        <h4><%= booking.start_on.strftime("%d %m %Y") %></h4>
+        <h4><%= booking.end_on.strftime("%d %m %Y") %></h4>
+        <h4><%= booking.user.first_name %> <%= booking.user.last_name %></h4>
+        <h4><%= booking.total_price %>$</h4>
+        <% if booking.status == "accepted" %>
+          <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>
+        <% elsif booking.status == "refused" %>
+          <h2 style="background-color: #CD4A49 opacity:0.9"> <%= booking.status %></h2>
+        <% else %>
+          <h2><%= booking.status %></h2>
+        <% end %>
+        <div class="card-category" style="background-image: url('<%= cl_image_path booking.board.photo.key %>')"></div>
+          <%= link_to board.name, board_path(board), class: "link_board" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
