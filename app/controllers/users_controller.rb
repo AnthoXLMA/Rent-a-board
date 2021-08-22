@@ -4,14 +4,6 @@ class UsersController < ApplicationController
     @user = user_current
     @users = User.all
     @user.photo = @user
-    @markers = @users.geocoded.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
-        image_url: helpers.asset_url('mapbox-marker-icon-green.svg')
-      }
-    end
   end
 
   def show
