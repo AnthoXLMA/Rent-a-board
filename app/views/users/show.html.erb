@@ -4,8 +4,22 @@
     <%= @user.location %><br>
     <%= @user.phone_number %><br>
     <%= @user.email %><br>
-    <div class="user-photo">
-      <img style="background-image: url('<%= cl_image_path @user.photo.key %>')" ><br>
+    <div class="user-photo-show">
+      <%= cl_image_tag @user.photo.key %>
+    </div>
+    <div class="user-actions">
+      <% if user_signed_in? %>
+        <h1>my bookings</h1>
+        <%= @user.bookings.each do |my_booking| %>
+          <% my_booking.board_id %>
+          <% my_booking.start_on.strftime("%d %m %Y") %>
+          <% my_booking.end_on.strftime("%d %m %Y") %>
+        <% end %>
+        <h1>my rentals</h1>
+        <h1>my wallet</h1>
+      <% else %>
+        <%= "you have to login to meet this member" %>
+      <% end %>
     </div>
   </div>
   <div class="container-all-boards">

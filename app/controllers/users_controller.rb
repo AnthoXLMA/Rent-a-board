@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_photo = @user.photo
     @boards = Board.all
+    @bookings = Booking.all
     @board = Board.find(params[:id])
     @board_photo = @boards.each do |board|
       board.photo
