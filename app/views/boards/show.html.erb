@@ -1,4 +1,6 @@
 <div class="container-body">
+
+
   <div class="container-one-board">
     <h1><%= @board.name %><br></h1>by <%= link_to @board.user.first_name, @board.user %>
     <%= cl_image_tag @board.photo.key %>
@@ -14,10 +16,13 @@
   <div class="container">
   <%= simple_form_for [@board, @booking] do |f| %>
     <div class="container_one">
+      <%= f.collection_select :board_id, Board.all, :id, :name %>
       <%= f.input :start_on, as: :date %>
       <%= f.input :end_on, as: :date %>
       <%= f.submit "Book Now", class: "btn btn-primary" %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+      <%= link_to board_url(:board_id => @board.id), class: "btn btn-primary" do %>
+      <i class="fa fa-calendar-plus-o"></i>Rent this board<% end %>
 </div>

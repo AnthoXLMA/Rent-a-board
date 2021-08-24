@@ -1,7 +1,7 @@
 <div class="container-booking">
   <p>My bookings</p>
-    <% @user.boards.each do |booking| %>
-    <%= booking.name %>
+    <% @board_bookings.each do |user_booking| %>
+    <%= user_booking.name %>
     <% end %>
   <div class="container-bookings-index">
     <% @bookings.each do |booking| %>
