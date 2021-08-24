@@ -10,9 +10,7 @@
     <div class="user-actions">
       <% if user_signed_in? %>
         <h1>my bookings</h1>
-        <% @user.bookings.each do |booking| %>
-          <%= booking.name %>
-        <% end %>
+        <%= @booking %>
         <h1>my rentals</h1>
         <h1>my wallet</h1>
       <% else %>

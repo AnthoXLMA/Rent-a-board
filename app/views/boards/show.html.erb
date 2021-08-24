@@ -1,6 +1,4 @@
 <div class="container-body">
-
-
   <div class="container-one-board">
     <h1><%= @board.name %><br></h1>by <%= link_to @board.user.first_name, @board.user %>
     <%= cl_image_tag @board.photo.key %>
@@ -23,6 +21,7 @@
     </div>
     <% end %>
   </div>
+  <br>
       <%= link_to board_url(:board_id => @board.id), class: "btn btn-primary" do %>
       <i class="fa fa-calendar-plus-o"></i>Rent this board<% end %>
 </div>

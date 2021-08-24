@@ -5,7 +5,8 @@ class Board < ApplicationRecord
   has_many :users, through: :bookings
   # has_many :owners
 
-  has_many :bookings, :inverse_of => :boards
+  has_many :bookings
+
   accepts_nested_attributes_for :bookings
 
   has_and_belongs_to_many :bookings, join_table: 'board_bookings'

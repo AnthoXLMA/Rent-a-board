@@ -32,7 +32,6 @@ class BoardsController < ApplicationController
     # end
   end
 
-
   def new
     @board = Board.new
     @board.save
