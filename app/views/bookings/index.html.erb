@@ -1,15 +1,16 @@
 <div class="container-booking">
   <p>My bookings</p>
-    <%= @bookings.each do |booking| %>
-    <%= booking.user.first_name %>
-    <% end %>
+  <%= @bookings.each do |booking| %>
+    <% booking %>
+  <% end %>
   <div class="container-bookings-index">
-    <%= @bookings.each do |booking| %>
+    <% @bookings.each do |booking| %>
       <div class="boards-cards">
         <h4><%= booking.start_on.strftime("%d %m %Y") %></h4>
         <h4><%= booking.end_on.strftime("%d %m %Y") %></h4>
         <h4><%= booking.user.first_name %> <%= booking.user.last_name %></h4>
         <h4><%= booking.total_price %>$</h4>
+        <h4><%= booking.board_id %></h4>
         <% if booking.status == "accepted" %>
           <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>
         <% elsif booking.status == "refused" %>
@@ -18,7 +19,6 @@
           <h2><%= booking.status %></h2>
         <% end %>
         <div class="card-category" style="background-image: url('<%= cl_image_path booking.board.photo.key %>')"></div>
-          <%= link_to board.name, board_path(board), class: "link_board" %>
         </div>
       <% end %>
     </div>

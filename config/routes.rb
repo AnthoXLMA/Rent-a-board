@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :boards, only: [:index, :new, :create, :show] do
-    resources :bookings, only: :create
+    resources :bookings, only: [:new, :create]
   end
 
   resources :users, only: [:show] do
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :new, :create]
 
   resources :users, only: [:show] do
-      resources :boards, only: [:index, :create, :show]
+      resources :boards, only: [:index, :create, :show] do
+        resources :board_bookings, only: [:index, :create, :show]
+      end
     end
 
   resources :boards, only: [:index, :show, :new, :create] do

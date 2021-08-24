@@ -1,0 +1,2 @@
+module BoardBookingsHelper
+end

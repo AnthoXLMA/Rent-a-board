@@ -1,5 +1,21 @@
 class BoardsController < ApplicationController
   # before_action :set_board, only: [:show, :index]
+#   before_action :set_board, only: [:show]
+
+#   def index
+#     @boards = Board.paginate(:page => params[:page], :per_page => 6).order('sort ASC')
+#   end
+
+#   def show
+#     @others = Board.paginate(:page => params[:page], :per_page => 4).order('sort ASC')
+#   end
+
+# private
+
+# def set_board
+#     @board = Board.find(params[:id])
+# end
+
   def index
     @user = current_user
     @boards = Board.all
@@ -26,12 +42,12 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board_photo = @board.photo
     @board.user = @user
-    @board.save
-    redirect_to boards_path(@boards)
+      @board.save
+        redirect_to boards_path(@boards)
   end
 
   def show
-    # @bookings = Booking.all
+    @bookings = Booking.all
     @booking = Booking.new
     @board = Board.find(params[:id])
     # @surfboard = Board.where(id: :id)
