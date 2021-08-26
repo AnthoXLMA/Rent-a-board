@@ -20,7 +20,7 @@ class Booking < ApplicationRecord
   end
 
 
-  #  validation for overlapping
+  # Validation for overlapping
   def overlaps
     bookings = Bookings.where(room_id: id)
     bookings.each do |booking|

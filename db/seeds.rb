@@ -12,7 +12,7 @@ antho = User.new(
   location:"Paris",
   email:"Antho@example.com",
   password: "password",
-  phone_number: "0123456789",
+  phone_number: "0635158132",
   )
 antho.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/jack.jpeg')), filename: 'jack.jpeg')
 antho.save!
@@ -25,7 +25,7 @@ jean = User.new(
   password: "password",
   phone_number: "1234567890",
   )
-jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/zidane.jpeg')), filename: 'zidane.jpeg')
+jean.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/method.jpg')), filename: 'method.jpg')
 jean.save!
 
 jorge = User.new(
@@ -34,7 +34,7 @@ jorge = User.new(
   location:"New York",
   email:"Bill@example.com",
   password: "password",
-  phone_number: "0023456789",
+  phone_number: "0614814349",
   )
 jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
 jorge.save!
@@ -46,25 +46,41 @@ quiksilver = Supplier.new(
   )
 quiksilver.save!
 
+
+decathlon = Supplier.new(
+  name: "decathlon",
+  contact: "Rio De Janeiro"
+  )
+decathlon.save!
+
+
+adamsurfboard = Supplier.new(
+  name: "Adams Surfboard",
+  contact: "Rio De Janeiro"
+  )
+adamsurfboard.save!
+
 # Seeding Trees
 puts 'Creating boards...'
-longboard = Board.new(
-  name: "Longboard",
+sharkbaby = Board.new(
+  name: "Baby Shark",
   size: "long",
-  brand: "quiksilver",
+  shape: "longboard",
+  brand: "Decathlon",
   price: 5,
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jorge.id,
-  supplier_id: quiksilver.id
+  supplier_id: decathlon.id
   )
-longboard.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
-longboard.save!
+sharkbaby.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
+sharkbaby.save!
 
 
-fusee = Board.new(
-  name: "Fusee",
+astralwave = Board.new(
+  name: "Astral wave",
   size: "short",
+  shape: "shortboard",
   brand: "quiksilver",
   price: 5,
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
@@ -72,27 +88,29 @@ fusee = Board.new(
   user_id: jean.id,
   supplier_id: quiksilver.id
   )
-fusee.photo.attach(io: File.open(Rails.root.join('db/fixtures/planche-de-surf-evolutive-ms-easy-pony.jpg')), filename: 'longboard.jpg')
-fusee.save!
+astralwave.photo.attach(io: File.open(Rails.root.join('db/fixtures/planche-de-surf-evolutive-ms-easy-pony.jpg')), filename: 'longboard.jpg')
+astralwave.save!
 
 shortythug = Board.new(
-  name: "shortythug",
+  name: "Shorty Thug",
   size: "short",
-  brand: "quiksilver",
+  brand: "adamsurfboard",
+  shape: "hybride",
   price: 5,
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: antho.id,
-  supplier_id: quiksilver.id
+  supplier_id: adamsurfboard.id
   )
 shortythug.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 shortythug.save!
 
 gabrielshark = Board.new(
-  name: "gabrielshark",
+  name: "Medina's Wheel",
   size: "long",
   brand: "quiksilver",
   price: 5,
+  shape: "gunboard",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: antho.id,
@@ -102,9 +120,10 @@ gabrielshark.photo.attach(io: File.open(Rails.root.join('db/fixtures/PLANCHEDESU
 gabrielshark.save!
 
 johndoo = Board.new(
-  name: "johndoo",
+  name: "John Doo Elevator",
   size: "long",
   brand: "quiksilver",
+  shape: "hybride",
   price: 5,
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",

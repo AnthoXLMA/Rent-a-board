@@ -9,14 +9,17 @@
     <div class="col-6">
       <%= simple_form_for(@board) do |f| %>
         <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.input :user_id %>
-          <%= f.collection_select :supplier_id, Supplier.all, :id, :name %>
-          <%= f.input :price %>
-          <%= f.input :size %>
-          <%= f.input :brand %>
+          <%= f.input :name, placeholder: 'Nom de la planche' %>
+          <%= f.input :price, placeholder: 'Prix de la location HT' %>
+          <%= f.input :guarantee_amount, placeholder: 'Montant de la garantie' %>
+          <%= f.label :size %>
+          <%= f.select :size, Board::SIZE.each.map { |size| [size] } %>
+          <%= f.label :shape %>
+          <%= f.select :shape, Board::SHAPE.each.map { |shape| [shape] } %>
+          <%= f.label :brand %>
+          <%= f.select :brand, Board::BRAND.each.map { |brand| [brand] } %>
           <%= f.input :address %>
-          <%= f.input :description %>
+          <%= f.input :description, as: :text %>
           <%= f.input :contact %>
           <%= f.input :photo, as: :file, direct_upload: 'true' %>
         </div>
