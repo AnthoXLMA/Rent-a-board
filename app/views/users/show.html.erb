@@ -1,5 +1,6 @@
 <div class="container-show-user">
   <div class="container-user-infos">
+    <div class="banner-user-infos">
     <%= @user.first_name %><br>
     <%= @user.location %><br>
     <%= @user.phone_number %><br>
@@ -7,13 +8,22 @@
     <div class="user-photo-show">
       <%= cl_image_tag @user.photo.key %>
     </div>
+  </div>
     <div class="user-actions">
       <% if user_signed_in? %>
         <h1>my bookings</h1>
-        <%= @booking %>
-        <h1>my rentals</h1>
-        <h1>my wallet</h1>
-      <% else %>
+          <% @user.bookings.each do |booking| %>
+            <div class="booking-ticket">
+              <p><%= booking.board.name %></p>
+              <p><%= booking.board.user.first_name %></p>
+              <p><%= booking.start_on %></p>
+              <p><%= booking.end_on %></p>
+              <p><%= booking.board.user.location %></p>
+            </div>
+              <% end %>
+          <h1>my rentals</h1>
+          <h1>my wallet</h1>
+          <% else %>
         <%= "you have to login to meet this member" %>
       <% end %>
     </div>

@@ -1,7 +1,7 @@
 .boards-cards {
   width:330px;
   height:550px;
-  background-color:#FDFFF7;
+  background-color:#FfFFFF;
   box-shadow: 2px 2px 10px 2px grey;
   border-radius:2px 2px 2px 2px;
   // padding:20px;
@@ -14,7 +14,7 @@
     padding:20px;
     height:150px;
     display:flex;
-    background-color:#FDFFF7;
+    background-color:white;
     line-height: normal;
     color:#007CBE;
     font-family:'Helvetica';
@@ -36,9 +36,9 @@
     margin-right: 10px;
     margin-left: 10px;
     .board-details {
-      padding:10px;
+      padding:0px;
       a {
-        font-family:'arial';
+        font-family:'Helvetica';
         font-size:15px;
       }
     }

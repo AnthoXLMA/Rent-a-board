@@ -1,16 +1,18 @@
 <div class="container-booking">
   <p>My bookings</p>
-  <%= @bookings.each do |booking| %>
-    <% booking %>
+  <% @bookings.each do |booking| %>
+    <%= booking.board.name %>
   <% end %>
   <div class="container-bookings-index">
     <% @bookings.each do |booking| %>
-      <div class="boards-cards">
-        <h4><%= booking.start_on.strftime("%d %m %Y") %></h4>
-        <h4><%= booking.end_on.strftime("%d %m %Y") %></h4>
-        <h4><%= booking.user.first_name %> <%= booking.user.last_name %></h4>
-        <h4><%= booking.total_price %>$</h4>
-        <h4><%= booking.board_id %></h4>
+      <div class="booking-cards">
+        <p><%= booking.board.name %></p>
+        <p><%= booking.board.shape %></p>
+        <p><%= booking.start_on.strftime("%d %m %Y") %></p>
+        <p><%= booking.end_on.strftime("%d %m %Y") %></p>
+        <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+        <p><%= booking.total_price %>$</p>
+        <p><%= booking.board_id %></p>
         <% if booking.status == "accepted" %>
           <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>
         <% elsif booking.status == "refused" %>

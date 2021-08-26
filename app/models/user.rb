@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
-
   validates :first_name, :last_name, presence: true
   # validates :phone_number, uniqueness: true, numericality: { only_integer: true }
 end
