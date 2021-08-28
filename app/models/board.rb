@@ -26,12 +26,14 @@ class Board < ApplicationRecord
   # validates :size, inclusion: { in: %w(small medium large) }
   # validates :price, numericality: true
 
+  AVAILABILITY = ['Available', 'Booked', 'Over']
+
   BRAND = ['Quiksilver', 'Adams Surfboard', 'Decathlon', 'SEO']
 
   SIZE = [' 6″ – 6’8″', '6’8″ – 7’4″', '7’4″ – 8’6″', '8’6″ – 9’2″', '9’2″ – 9’6″', '+ de 9’6″']
 
   SHAPE = ['Fish', 'ShortBoard', 'Hybride', 'Funboard', 'Gunboard', 'Longboard']
 
-  geocoded_by :address
+    geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end

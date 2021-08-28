@@ -1,7 +1,7 @@
 <div class="container-booking">
   <p>My bookings</p>
-  <% @bookings.each do |booking| %>
-    <%= booking.board.name %>
+  <% @bookings.each_with_index do |booking, i| %>
+  <%= i + 1 %> - <%= booking.board.name %><br>
   <% end %>
   <div class="container-bookings-index">
     <% @bookings.each do |booking| %>
@@ -10,9 +10,8 @@
         <p><%= booking.board.shape %></p>
         <p><%= booking.start_on.strftime("%d %m %Y") %></p>
         <p><%= booking.end_on.strftime("%d %m %Y") %></p>
-        <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+        <p><%= booking.board.user.first_name %></p>
         <p><%= booking.total_price %>$</p>
-        <p><%= booking.board_id %></p>
         <% if booking.status == "accepted" %>
           <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>
         <% elsif booking.status == "refused" %>
