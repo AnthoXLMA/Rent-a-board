@@ -133,19 +133,19 @@ johndoo = Board.new(
 johndoo.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 johndoo.save!
 
-puts 'Finished!'
-
 # Seeding Rentals
-#puts 'Creating Rentals...'
-#cactus_loc = Rental.new(
-#  start_on: Time.now,
-#  end_on: Time.now + 10.days,
-#  total_price: "230",
-#  status: status.value,
-#  user_id: marco.id,
-#  tree_id: cactus.id
-#  )
-#cactus_loc.save!
+puts 'Creating bookings...'
+astral_loc = Booking.new(
+ start_on: Time.now,
+ end_on: Time.now + 10.days,
+ total_price: "30",
+ # status: status.value,
+ user_id: antho.id,
+ board_id: astralwave.id
+ )
+astral_loc.save!
+
+puts 'Finished!'
 
 # Seeding Rentals
 # 5.times do

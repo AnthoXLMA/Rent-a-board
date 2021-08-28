@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
-  namespace :customers do
+  namespace :owner do
     resources :boards, only: [:index]
     resources :bookings, only: [:index] do
       member do
@@ -34,4 +34,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end
