@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   # before_action :set_board, only: [:show, :index]
-#   before_action :set_board, only: [:show]
+  before_action :set_board, only: [:show]
 
 #   def index
 #     @boards = Board.paginate(:page => params[:page], :per_page => 6).order('sort ASC')
@@ -21,15 +21,11 @@ class BoardsController < ApplicationController
     @boards = Board.all
     @board = @boards.each do |board|
       board
+    #   if params[:board]
+    #   @boards = @boards.select { |board| board.start_with?(params[:board]) }
+    # end
+    # @boards = Board.paginate(:page => params[:page], :per_page => 6).order('sort ASC')
     end
-    # @surfers = User.all
-    # @surfer = @surfers.each do |surfer|
-    #   surfer
-    # end
-    # @surfman = @surfer.find(params[:id])
-    # @board_photo = @boards.each do |board|
-    #   board.photo
-    # end
   end
 
   def new
@@ -58,6 +54,7 @@ class BoardsController < ApplicationController
     else
       render 'boards/show'
     end
+    # @others = Board.paginate(:page => params[:page], :per_page => 4).order('sort ASC')
   end
 
   private

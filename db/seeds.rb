@@ -3,19 +3,26 @@ puts "cleaning DB"
 Booking.delete_all
 Board.delete_all
 Supplier.delete_all
+Owner.delete_all
 User.delete_all
 
+puts 'Creating accounts...'
+account1 = Account.new(
+  created_at: "21-10-2021",
+  updated_at: "22-10-2021")
+account1.save!
+
 puts 'Creating users...'
-antho = User.new(
+anthony = User.new(
   first_name: "Antho",
-  last_name: "Dupont",
+  last_name: "Mania",
   location:"Paris",
   email:"Antho@example.com",
   password: "password",
   phone_number: "0635158132",
   )
-antho.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/jack.jpeg')), filename: 'jack.jpeg')
-antho.save!
+anthony.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/jack.jpeg')), filename: 'jack.jpeg')
+anthony.save!
 
 jean = User.new(
   first_name: "Jean",
@@ -32,11 +39,24 @@ jorge = User.new(
   first_name: "Jorge",
   last_name: "De Almeida",
   location:"New York",
-  email:"Bill@example.com",
+  email:"Jorge@example.com",
   password: "password",
   phone_number: "0614814349",
   )
 jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
+jorge.save!
+
+puts 'Creating owners...'
+jorge = Owner.new(
+  first_name: "Jorge",
+  last_name: "De Almeida",
+  address:"New York",
+  email:"Jorge@example.com",
+  password: "password",
+  phone_number: "0614814349",
+  account_id: account1.id,
+  user_id: jorge.id
+  )
 jorge.save!
 
 puts 'Creating suppliers...'
@@ -48,7 +68,7 @@ quiksilver.save!
 
 
 decathlon = Supplier.new(
-  name: "decathlon",
+  name: "Decathlon",
   contact: "Rio De Janeiro"
   )
 decathlon.save!
@@ -67,7 +87,7 @@ sharkbaby = Board.new(
   size: "long",
   shape: "longboard",
   brand: "Decathlon",
-  price: 5,
+  price: "5",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jorge.id,
@@ -82,7 +102,7 @@ astralwave = Board.new(
   size: "short",
   shape: "shortboard",
   brand: "quiksilver",
-  price: 5,
+  price: "23",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,
@@ -96,7 +116,7 @@ shortythug = Board.new(
   size: "short",
   brand: "adamsurfboard",
   shape: "hybride",
-  price: 5,
+  price: "50",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: antho.id,
@@ -109,7 +129,7 @@ gabrielshark = Board.new(
   name: "Medina's Wheel",
   size: "long",
   brand: "quiksilver",
-  price: 5,
+  price: "20",
   shape: "gunboard",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
@@ -124,7 +144,7 @@ johndoo = Board.new(
   size: "long",
   brand: "quiksilver",
   shape: "hybride",
-  price: 5,
+  price: "30",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,

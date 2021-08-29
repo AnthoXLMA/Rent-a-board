@@ -6,6 +6,9 @@ class Booking < ApplicationRecord
   # validates :start_on, :end_on, format: { with: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/ }
   # validates :total_price, numericality: true
 
+  has_many :booking_payments, dependent: :destroy, :inverse_of => :account
+  accepts_nested_attributes_for :booking_payments
+
   # enum status: [:pending, :completed, :cancelled]
 
   # scope :created_before, ->(time) { where('created_at < ?', time) }

@@ -3,7 +3,12 @@ class Board < ApplicationRecord
   # belongs_to :supplier
 
   has_many :users, through: :bookings
-  # has_many :owners
+
+  has_many :customers, through: :bookings
+  has_many :owners, through: :bookings
+
+  has_many :board_payments, dependent: :destroy, :inverse_of => :account
+  accepts_nested_attributes_for :board_payments
 
   has_many :bookings
 
