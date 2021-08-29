@@ -13,7 +13,7 @@
       <% if user_signed_in? %><br>
       <div class="btn" style="width:400px">
           <%= form_tag boards_path, method: :get do %>
-        <%= text_field_tag :query, params[:board],
+          <%= text_field_tag :query, params[:board],
           class: "form-control",
           placeholder: "Recherche"
         %>

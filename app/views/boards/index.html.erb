@@ -4,6 +4,11 @@
 
 <div class="container-body">
   <p>Heure locale <%= Time.now %> <%= Date.today %><p>
+    <input type="text"
+     name="board"
+     value="<%= params[:board] %>"
+     placeholder="Recherche">
+    <input type="submit">
   <div class="index-boards-cards">
     <% @boards.each do |board| %>
       <div class="boards-cards">

@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :boards
   has_many :board_requests, through: :boards, source: :bookings
 
+  has_many :owners, dependent: :destroy
+  # accepts_nested_attributes_for :users
+
   has_many :bookings
   has_many :reviews
 

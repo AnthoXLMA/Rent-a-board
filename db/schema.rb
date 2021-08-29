@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_032733) do
+ActiveRecord::Schema.define(version: 2021_08_29_090425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -86,7 +91,29 @@ ActiveRecord::Schema.define(version: 2021_08_27_032733) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "owners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "password"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_owners_on_account_id"
+    t.index ["user_id"], name: "index_owners_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -122,4 +149,6 @@ ActiveRecord::Schema.define(version: 2021_08_27_032733) do
   add_foreign_key "boards", "users"
   add_foreign_key "bookings", "boards"
   add_foreign_key "bookings", "users"
+  add_foreign_key "owners", "accounts"
+  add_foreign_key "owners", "users"
 end
