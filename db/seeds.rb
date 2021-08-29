@@ -5,14 +5,25 @@ Board.delete_all
 Supplier.delete_all
 Owner.delete_all
 User.delete_all
+Account.delete_all
 
-puts 'Creating accounts...'
+puts 'CREATING ACCOUNTS'
 account1 = Account.new(
   created_at: "21-10-2021",
   updated_at: "22-10-2021")
 account1.save!
 
-puts 'Creating users...'
+account2 = Account.new(
+  created_at: "01-10-2021",
+  updated_at: "02-10-2021")
+account2.save!
+
+account3 = Account.new(
+  created_at: "21-09-2021",
+  updated_at: "22-11-2021")
+account3.save!
+
+puts 'CREATING USERS'
 anthony = User.new(
   first_name: "Antho",
   last_name: "Mania",
@@ -26,9 +37,9 @@ anthony.save!
 
 jean = User.new(
   first_name: "Jean",
-  last_name:"Bourvil",
-  location:"Rio de Janeiro",
-  email:"Jean@example.com",
+  last_name:"Bossard",
+  location:"Lyon",
+  email:"jean@example.com",
   password: "password",
   phone_number: "1234567890",
   )
@@ -46,18 +57,55 @@ jorge = User.new(
 jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
 jorge.save!
 
-puts 'Creating owners...'
-jorge = Owner.new(
-  first_name: "Jorge",
-  last_name: "De Almeida",
-  address:"New York",
-  email:"Jorge@example.com",
-  password: "password",
-  phone_number: "0614814349",
-  account_id: account1.id,
-  user_id: jorge.id
-  )
-jorge.save!
+# puts 'CREATING OWNERS'
+# jorge = Owner.new(
+#   first_name: "Jorge",
+#   last_name: "De Almeida",
+#   address:"New York",
+#   email:"Jorge@example.com",
+#   password: "password",
+#   phone_number: "0614814349",
+#   account_id: account2.id,
+#   user_id: jorge.id
+#   )
+# jorge.save!
+
+# anthony = Owner.new(
+#   first_name: "Anthony",
+#   last_name: "De Almeida",
+#   address:"New York",
+#   email:"Jorge@example.com",
+#   password: "password",
+#   phone_number: "0614814349",
+#   account_id: account1.id,
+#   user_id: anthony.id
+#   )
+# anthony.save!
+
+# jean = Owner.new(
+#   first_name: "Jean",
+#   last_name: "De Almeida",
+#   address:"New York",
+#   email:"Jorge@example.com",
+#   password: "password",
+#   phone_number: "0614814349",
+#   account_id: account3.id,
+#   user_id: jean.id
+#   )
+# jean.save!
+
+
+# bob = Owner.new(
+#   first_name: "Bob",
+#   last_name: "De La Vega",
+#   address:"New York",
+#   email:"bob@example.com",
+#   password: "password",
+#   phone_number: "0614814349",
+#   account_id: account4.id,
+#   user_id: bob.id
+#   )
+# bob.save!
 
 puts 'Creating suppliers...'
 quiksilver = Supplier.new(
@@ -66,13 +114,11 @@ quiksilver = Supplier.new(
   )
 quiksilver.save!
 
-
 decathlon = Supplier.new(
   name: "Decathlon",
   contact: "Rio De Janeiro"
   )
 decathlon.save!
-
 
 adamsurfboard = Supplier.new(
   name: "Adams Surfboard",
@@ -80,7 +126,6 @@ adamsurfboard = Supplier.new(
   )
 adamsurfboard.save!
 
-# Seeding Trees
 puts 'Creating boards...'
 sharkbaby = Board.new(
   name: "Baby Shark",
@@ -119,13 +164,13 @@ shortythug = Board.new(
   price: "50",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
-  user_id: antho.id,
+  user_id: anthony.id,
   supplier_id: adamsurfboard.id
   )
 shortythug.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 shortythug.save!
 
-gabrielshark = Board.new(
+gabrielboard = Board.new(
   name: "Medina's Wheel",
   size: "long",
   brand: "quiksilver",
@@ -133,11 +178,11 @@ gabrielshark = Board.new(
   shape: "gunboard",
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
-  user_id: antho.id,
+  user_id: anthony.id,
   supplier_id: quiksilver.id
   )
-gabrielshark.photo.attach(io: File.open(Rails.root.join('db/fixtures/PLANCHEDESURFENMOUSSE6.0HOA_1080x.png')), filename: 'longboard.jpg')
-gabrielshark.save!
+gabrielboard.photo.attach(io: File.open(Rails.root.join('db/fixtures/PLANCHEDESURFENMOUSSE6.0HOA_1080x.png')), filename: 'longboard.jpg')
+gabrielboard.save!
 
 johndoo = Board.new(
   name: "John Doo Elevator",
@@ -153,14 +198,13 @@ johndoo = Board.new(
 johndoo.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 johndoo.save!
 
-# Seeding Rentals
 puts 'Creating bookings...'
 astral_loc = Booking.new(
  start_on: Time.now,
  end_on: Time.now + 10.days,
  total_price: "30",
  # status: status.value,
- user_id: antho.id,
+ user_id: anthony.id,
  board_id: astralwave.id
  )
 astral_loc.save!
