@@ -2,23 +2,21 @@ class Customer < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
-  has_many :customers, dependent: :destroy, :inverse_of => :account
-  accepts_nested_attributes_for :customers
-
-  belongs_to :account, :inverse_of => :customers
-  accepts_nested_attributes_for :account
-
-  belongs_to :user, :inverse_of => :customers
+  belongs_to :user
   accepts_nested_attributes_for :user
 
-  has_many :bookings, dependent: :destroy, :inverse_of => :customer
+  belongs_to :account
+  accepts_nested_attributes_for :account
+
+  has_many :customers, dependent: :destroy
+  accepts_nested_attributes_for :customers
+
+  has_many :bookings, dependent: :destroy
   accepts_nested_attributes_for :bookings
 
   has_many :boards, :through => :bookings
 
   has_many :board_payments, :through => :bookings
-
-  # mount_uploader :photo, ClientUploader
 
   def name
     "#{first_name} #{last_name}"

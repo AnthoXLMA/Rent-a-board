@@ -2,7 +2,7 @@ class OwnersController < ApplicationController
   def index
     @user= current_user
     @bookings = Booking.all
-    @my_bookings = @user.bookings
+    # @my_bookings = @user.bookings
   end
 
   def accept
