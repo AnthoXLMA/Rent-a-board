@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_29_090425) do
+ActiveRecord::Schema.define(version: 2021_08_30_133220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -50,6 +52,20 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
     t.index ["booking_id"], name: "index_board_bookings_on_booking_id"
   end
 
+  create_table "board_payments", force: :cascade do |t|
+    t.string "payment_number"
+    t.string "status"
+    t.date "date"
+    t.integer "cost"
+    t.string "service"
+    t.integer "booking_id"
+    t.integer "account_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_board_payments_on_account_id"
+    t.index ["booking_id"], name: "index_board_payments_on_booking_id"
+  end
+
   create_table "boards", force: :cascade do |t|
     t.string "name"
     t.integer "size"
@@ -68,7 +84,9 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
     t.bigint "booking_id"
     t.string "shape"
     t.string "availability", default: "available"
+    t.bigint "owner_id"
     t.index ["booking_id"], name: "index_boards_on_booking_id"
+    t.index ["owner_id"], name: "index_boards_on_owner_id"
     t.index ["supplier_id"], name: "index_boards_on_supplier_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
@@ -82,13 +100,39 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
     t.string "status", default: "pending"
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
+    t.bigint "schedule_id"
+    t.bigint "account_id"
+    t.bigint "customer_id", null: false
+    t.bigint "owner_id", null: false
+    t.index ["account_id"], name: "index_bookings_on_account_id"
     t.index ["board_id"], name: "index_bookings_on_board_id"
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+    t.index ["owner_id"], name: "index_bookings_on_owner_id"
+    t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "customers", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_customers_on_account_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "lesson_payments", force: :cascade do |t|
+    t.string "payment_number"
+    t.string "status"
+    t.date "date"
+    t.integer "cost"
+    t.string "service"
+    t.integer "booking_id"
+    t.integer "account_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_lesson_payments_on_account_id"
+    t.index ["booking_id"], name: "index_lesson_payments_on_booking_id"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -116,6 +160,13 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
   create_table "schedules", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer "owner_id"
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_schedules_on_account_id"
+    t.index ["owner_id"], name: "index_schedules_on_owner_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -141,14 +192,22 @@ ActiveRecord::Schema.define(version: 2021_08_29_090425) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "board_bookings", "boards"
   add_foreign_key "board_bookings", "bookings"
   add_foreign_key "boards", "bookings"
+  add_foreign_key "boards", "owners"
   add_foreign_key "boards", "suppliers"
   add_foreign_key "boards", "users"
+  add_foreign_key "bookings", "accounts"
   add_foreign_key "bookings", "boards"
+  add_foreign_key "bookings", "customers"
+  add_foreign_key "bookings", "owners"
+  add_foreign_key "bookings", "schedules"
   add_foreign_key "bookings", "users"
+  add_foreign_key "customers", "accounts"
+  add_foreign_key "customers", "users"
   add_foreign_key "owners", "accounts"
   add_foreign_key "owners", "users"
 end

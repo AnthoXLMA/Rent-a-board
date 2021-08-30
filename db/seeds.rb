@@ -4,28 +4,13 @@ Booking.delete_all
 Board.delete_all
 Supplier.delete_all
 Owner.delete_all
-User.delete_all
 Account.delete_all
+User.delete_all
 
-puts 'CREATING ACCOUNTS'
-account1 = Account.new(
-  created_at: "21-10-2021",
-  updated_at: "22-10-2021")
-account1.save!
-
-account2 = Account.new(
-  created_at: "01-10-2021",
-  updated_at: "02-10-2021")
-account2.save!
-
-account3 = Account.new(
-  created_at: "21-09-2021",
-  updated_at: "22-11-2021")
-account3.save!
 
 puts 'CREATING USERS'
 anthony = User.new(
-  first_name: "Antho",
+  first_name: "Anthony",
   last_name: "Mania",
   location:"Paris",
   email:"Antho@example.com",
@@ -57,57 +42,70 @@ jorge = User.new(
 jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
 jorge.save!
 
-# puts 'CREATING OWNERS'
-# jorge = Owner.new(
-#   first_name: "Jorge",
-#   last_name: "De Almeida",
-#   address:"New York",
-#   email:"Jorge@example.com",
-#   password: "password",
-#   phone_number: "0614814349",
-#   account_id: account2.id,
-#   user_id: jorge.id
-#   )
-# jorge.save!
+puts 'CREATING ACCOUNTS'
+account1 = Account.new(
+  created_at: "21-10-2021",
+  updated_at: "22-10-2021",
+  user_id: anthony.id
+  )
+account1.save!
 
-# anthony = Owner.new(
-#   first_name: "Anthony",
-#   last_name: "De Almeida",
-#   address:"New York",
-#   email:"Jorge@example.com",
-#   password: "password",
-#   phone_number: "0614814349",
-#   account_id: account1.id,
-#   user_id: anthony.id
-#   )
-# anthony.save!
+account2 = Account.new(
+  created_at: "01-10-2021",
+  updated_at: "02-10-2021",
+  user_id: jean.id
+  )
+account2.save!
 
-# jean = Owner.new(
-#   first_name: "Jean",
-#   last_name: "De Almeida",
-#   address:"New York",
-#   email:"Jorge@example.com",
-#   password: "password",
-#   phone_number: "0614814349",
-#   account_id: account3.id,
-#   user_id: jean.id
-#   )
-# jean.save!
+account3 = Account.new(
+  created_at: "21-09-2021",
+  updated_at: "22-11-2021",
+  user_id: jorge.id
+  )
+account3.save!
 
+puts 'CREATING OWNERS'
+anthony = Owner.new(
+  account_id: account1.id,
+  user_id: anthony.id
+  )
+anthony.save!
 
-# bob = Owner.new(
-#   first_name: "Bob",
-#   last_name: "De La Vega",
-#   address:"New York",
-#   email:"bob@example.com",
-#   password: "password",
-#   phone_number: "0614814349",
-#   account_id: account4.id,
-#   user_id: bob.id
-#   )
-# bob.save!
+jean = Owner.new(
+  account_id: account2.id,
+  user_id: jean.id
+  )
+jean.save!
 
-puts 'Creating suppliers...'
+jorge = Owner.new(
+  account_id: account3.id,
+  user_id: jorge.id
+  )
+jorge.save!
+
+puts 'CREATING CUSTOMERS'
+jean = Customer.new(
+  user_id: jean.id,
+  account_id: jean.id
+  )
+jean.save!
+
+anthony = Customer.new(
+  user_id: anthony.id,
+  account_id: anthony.id
+  )
+anthony.save!
+
+puts 'CREATING SCHEDULES'
+agenda1 = Schedule.new(
+  created_at: "20-12-2021",
+  updated_at: "22-12-2021",
+  account_id: account1.id,
+  owner_id: anthony.id
+  )
+agenda1.save!
+
+puts 'CREATING SUPPLIERS'
 quiksilver = Supplier.new(
   name: "Quiksilver",
   contact: "Rio De Janeiro"
@@ -126,7 +124,7 @@ adamsurfboard = Supplier.new(
   )
 adamsurfboard.save!
 
-puts 'Creating boards...'
+puts 'CREATING BOARDS'
 sharkbaby = Board.new(
   name: "Baby Shark",
   size: "long",
@@ -136,11 +134,11 @@ sharkbaby = Board.new(
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jorge.id,
+  owner_id: jorge.id,
   supplier_id: decathlon.id
   )
 sharkbaby.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 sharkbaby.save!
-
 
 astralwave = Board.new(
   name: "Astral wave",
@@ -151,6 +149,7 @@ astralwave = Board.new(
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,
+  owner_id: jean.id,
   supplier_id: quiksilver.id
   )
 astralwave.photo.attach(io: File.open(Rails.root.join('db/fixtures/planche-de-surf-evolutive-ms-easy-pony.jpg')), filename: 'longboard.jpg')
@@ -165,6 +164,7 @@ shortythug = Board.new(
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: anthony.id,
+  owner_id: anthony.id,
   supplier_id: adamsurfboard.id
   )
 shortythug.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
@@ -179,6 +179,7 @@ gabrielboard = Board.new(
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: anthony.id,
+  owner_id: anthony.id,
   supplier_id: quiksilver.id
   )
 gabrielboard.photo.attach(io: File.open(Rails.root.join('db/fixtures/PLANCHEDESURFENMOUSSE6.0HOA_1080x.png')), filename: 'longboard.jpg')
@@ -193,19 +194,24 @@ johndoo = Board.new(
   address: "108 Avenida Atlantica, CEP4430 - Copacabana, Rio de Janeiro",
   description: "A very cool board for novices, children and other people wanting to learn in little waves",
   user_id: jean.id,
+  owner_id: jean.id,
   supplier_id: quiksilver.id
   )
 johndoo.photo.attach(io: File.open(Rails.root.join('db/fixtures/longboard.jpg')), filename: 'longboard.jpg')
 johndoo.save!
 
-puts 'Creating bookings...'
+puts 'CREATING BOOKINGS'
 astral_loc = Booking.new(
  start_on: Time.now,
  end_on: Time.now + 10.days,
  total_price: "30",
  # status: status.value,
- user_id: anthony.id,
- board_id: astralwave.id
+ user_id: jean.id,
+ board_id: astralwave.id,
+ account_id:account1.id,
+ owner_id:jean.id,
+ customer_id: anthony.id,
+ schedule_id:agenda1.id
  )
 astral_loc.save!
 

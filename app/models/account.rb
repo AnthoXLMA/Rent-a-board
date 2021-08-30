@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
   # Users
- has_many :users, dependent: :destroy
- accepts_nested_attributes_for :users
+ belongs_to :user, dependent: :destroy
+ accepts_nested_attributes_for :user
 
  # Owners
  has_many :owners, dependent: :destroy

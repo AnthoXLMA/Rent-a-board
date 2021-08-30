@@ -1,0 +1,2 @@
+class BoardPayment < ApplicationRecord
+end

@@ -3,31 +3,31 @@
 </div>
 
 <div class="container-body">
+  <% @owners.each do |owner| %>
+  <%= owner.id %>
+  <%= owner.account.user.first_name %>
+  <%end%>
   <p>Heure locale <%= Time.now %> <%= Date.today %><p>
-    <input type="text"
-     name="board"
-     value="<%= params[:board] %>"
-     placeholder="Recherche">
-    <input type="submit">
   <div class="index-boards-cards">
     <% @boards.each do |board| %>
       <div class="boards-cards">
         <div class="user-infos">
           <div class="user-details">
-            <%= board.user.first_name %><br>
-            <%= board.user.location %><br>
-            <%= board.user.phone_number %><br>
-            <%= board.user.email %><br>
+            <%= board.owner.account.user.first_name %><br>
+            <%= board.owner.account.user.location %><br>
+            <%= board.owner.account.user.phone_number %><br>
+            <%= board.owner.address %><br>
+            <%= board.owner.phone_number %>
           </div>
           <div class="user-photo">
-            <img style="background-image: url('<%= cl_image_path board.user.photo.key %>')" ><br>
+
           </div>
         </div>
           <hr style="width:90%", size="5", color=black>
         <div class="board-infos">
           <div class="board-details">
-            <a><%= board.name %><br></a>
-            <a><%= board.size %>""<br></a>
+            <a><%= board.owner.name %><br></a>
+            <a><%= board.owner.address %><br></a>
             <a><%= board.brand %><br></a>
             <a><%= board.price %>€<br></a>
             <a><%= board.guarantee_amount %>€<br></a>
@@ -42,7 +42,7 @@
             <%= link_to "Voir plus", board_path(board) %>
           </div>
           <div class="btn btn-warning">
-            <%= link_to "Contact", board.user %>
+            <%= link_to "Contact", owner_boards_path %>
           </div>
         </div>
         </div>

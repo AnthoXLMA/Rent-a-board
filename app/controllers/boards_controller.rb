@@ -1,31 +1,11 @@
 class BoardsController < ApplicationController
-  # before_action :set_board, only: [:show, :index]
-  before_action :set_board, only: [:show]
-
-#   def index
-#     @boards = Board.paginate(:page => params[:page], :per_page => 6).order('sort ASC')
-#   end
-
-#   def show
-#     @others = Board.paginate(:page => params[:page], :per_page => 4).order('sort ASC')
-#   end
-
-# private
-
-# def set_board
-#     @board = Board.find(params[:id])
-# end
+  before_action :set_board, only: [:show, :index]
+  # before_action :set_board, only: [:show]
 
   def index
     @user = current_user
     @boards = Board.all
-    @board = @boards.each do |board|
-      board
-    #   if params[:board]
-    #   @boards = @boards.select { |board| board.start_with?(params[:board]) }
-    # end
-    # @boards = Board.paginate(:page => params[:page], :per_page => 6).order('sort ASC')
-    end
+    @owners = Owner.all
   end
 
   def new
@@ -60,7 +40,7 @@ class BoardsController < ApplicationController
   private
 
   def set_board
-    @board = Board.find(params[:id])
+    @boards = Board.all
   end
 
   def board_params

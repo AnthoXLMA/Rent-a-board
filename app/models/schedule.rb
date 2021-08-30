@@ -10,8 +10,8 @@ class Schedule < ApplicationRecord
 
   validates :start, uniqueness: { scope: :owner_id, message: "You have already made this time available" }
 
-  amoeba do
-    enable
-    exclude_associations :bookings
-  end
+  # amoeba do
+  #   enable
+  #   exclude_associations :bookings
+  # end
 end
