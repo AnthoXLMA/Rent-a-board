@@ -5,10 +5,9 @@ Rails.application.routes.draw do
     delete '/users/sign_out' => 'devise/sessions#destroy'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :boards, only: [:index, :new, :create, :show]
-  # do
-  #   resources :bookings, only: [:new, :create]
-  # end
+  resources :boards, only: [:index, :new, :create, :show] do
+    resources :bookings, only: [:new, :create]
+  end
 
   resources :users, only: [:show] do
     resources :bookings, only: [:index, :new, :create]
@@ -20,6 +19,10 @@ Rails.application.routes.draw do
       resources :boards, only: [:index, :create, :show] do
         resources :board_bookings, only: [:index, :create, :show]
       end
+    end
+
+    resources :owners, only: [:show] do
+      resources :boards, only: [:show]
     end
 
   resources :boards, only: [:index, :show, :new, :create] do

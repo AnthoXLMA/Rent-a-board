@@ -1,16 +1,20 @@
 class OwnersController < ApplicationController
   def index
     @user= current_user
-    @owner = Owner.all
-    # @bookings = Booking.all
-    # @my_bookings = @user.bookings
+    @owners = Owner.all
+    @bookings = Booking.all
+    @my_bookings = @booking.user
+  end
+
+  def show
+    @owner = Owner.find(params[:id])
   end
 
   def accept
-      @booking = Booking.find(params[:id])
-      @booking.status = 'accepted'
-      @booking.save
-      redirect_to owner_bookings_path
+    @booking = Booking.find(params[:id])
+    @booking.status = 'accepted'
+    @booking.save
+    redirect_to owner_bookings_path
   end
 
   def refuse
