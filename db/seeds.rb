@@ -84,17 +84,23 @@ jorge = Owner.new(
 jorge.save!
 
 puts 'CREATING CUSTOMERS'
+anthony = Customer.new(
+  user_id: anthony.id,
+  account_id: account1.id
+  )
+anthony.save!
+
 jean = Customer.new(
   user_id: jean.id,
-  account_id: jean.id
+  account_id: account2.id
   )
 jean.save!
 
-anthony = Customer.new(
-  user_id: anthony.id,
-  account_id: anthony.id
+jorge = Customer.new(
+  user_id: jorge.id,
+  account_id: account3.id
   )
-anthony.save!
+jorge.save!
 
 puts 'CREATING SCHEDULES'
 agenda1 = Schedule.new(
@@ -208,9 +214,9 @@ astral_loc = Booking.new(
  # status: status.value,
  user_id: jean.id,
  board_id: astralwave.id,
- account_id:account1.id,
+ account_id:account3.id,
  owner_id:jean.id,
- customer_id: anthony.id,
+ customer_id: jorge.id,
  schedule_id:agenda1.id
  )
 astral_loc.save!

@@ -2,8 +2,8 @@ class Schedule < ApplicationRecord
   belongs_to :account, :inverse_of => :schedules
   accepts_nested_attributes_for :account
 
-  belongs_to :owner, :inverse_of => :schedules
-  accepts_nested_attributes_for :owner
+  # belongs_to :owner, :inverse_of => :schedules
+  # accepts_nested_attributes_for :owner
 
   has_many :bookings, :inverse_of => :schedule
   accepts_nested_attributes_for :bookings

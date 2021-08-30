@@ -6,6 +6,12 @@ class BoardsController < ApplicationController
     @user = current_user
     @boards = Board.all
     @owners = Owner.all
+    # @owner = @owners.each do |owner|
+    #   owner
+    # end
+    # @board = @boards.each do |board|
+    #   board
+    # end
   end
 
   def new
@@ -45,6 +51,6 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:name, :size, :brand, :price, :contact,
-    :description, :supplier_id, :address, :user_id, :photo)
+    :description, :supplier_id, :address, :user_id, :photo, :guarantee_amount, :shape)
   end
 end
