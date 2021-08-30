@@ -6,12 +6,6 @@ class BoardsController < ApplicationController
     @user = current_user
     @boards = Board.all
     @owners = Owner.all
-    # @owner = @owners.each do |owner|
-    #   owner
-    # end
-    # @board = @boards.each do |board|
-    #   board
-    # end
   end
 
   def new

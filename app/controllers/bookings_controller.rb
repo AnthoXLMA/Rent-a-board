@@ -15,14 +15,12 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
-    @board = Board.find(params[:board_id])
+    # @owner = User.find(params[:id])
+    # @board = Board.find(params[:board_id])
     # @rental.total_price = ((@rental.end_on - @rental.start_on) / 86_400) * @tree.price
     @booking.board = @board
-    if @booking.save
+    @booking.save
       redirect_to bookings_path
-    else
-      render :new
-    end
   end
 
   def accept
