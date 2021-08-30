@@ -1,11 +1,10 @@
 class Board < ApplicationRecord
   belongs_to :owner
-  # belongs_to :user
-  # belongs_to :supplier
-  # has_many :users, through: :bookings
+  belongs_to :user
+  belongs_to :supplier
+  has_many :users, through: :bookings
 
   has_many :customers, through: :bookings
-  # has_many :owners, through: :bookings
 
   has_many :board_payments, dependent: :destroy, :inverse_of => :account
   accepts_nested_attributes_for :board_payments

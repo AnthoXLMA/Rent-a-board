@@ -11,15 +11,7 @@ class Customer < ApplicationRecord
   has_many :bookings, dependent: :destroy
   accepts_nested_attributes_for :bookings
 
-  has_many :boards, :through => :bookings
+  # has_many :boards, :through => :bookings
 
-  has_many :board_payments, :through => :bookings
-
-  def name
-    "#{first_name} #{last_name}"
-  end
-
-  def email
-    User.find_by_id(self.user_id)
-  end
+  has_many :board_payments
 end

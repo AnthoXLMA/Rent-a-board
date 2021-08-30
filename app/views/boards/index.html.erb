@@ -13,22 +13,20 @@
       <div class="boards-cards">
         <div class="user-infos">
           <div class="user-details">
-            <%= board.owner.account.user.first_name %><br>
-            <%= board.owner.account.user.location %><br>
-            <%= board.owner.account.user.phone_number %><br>
-            <%= board.owner.address %><br>
-            <%= board.owner.phone_number %>
+            <%= board.user.first_name %><br>
+            <%= board.user.location %>
           </div>
           <div class="user-photo">
-
+            <img style="background-image: url('<%= cl_image_path board.user.photo.key %>')"><br>
           </div>
         </div>
           <hr style="width:90%", size="5", color=black>
         <div class="board-infos">
           <div class="board-details">
-            <a><%= board.owner.name %><br></a>
+            <a><%= board.owner.user.first_name %><br></a>
             <a><%= board.owner.address %><br></a>
-            <a><%= board.brand %><br></a>
+            <a><%  board.owner.user.location %><br></a>
+            <a><%= board.name %><br></a>
             <a><%= board.price %>€<br></a>
             <a><%= board.guarantee_amount %>€<br></a>
             <a><%= board.availability %><br></a>
