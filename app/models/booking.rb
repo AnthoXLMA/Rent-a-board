@@ -1,12 +1,32 @@
 class Booking < ApplicationRecord
-  belongs_to :user, inverse_of: :bookings
+  # belongs_to :user, inverse_of: :bookings
   belongs_to :board, inverse_of: :bookings
   # has_and_belongs_to_many :boards, join_table: 'board_bookings'
   # validates :start_on, :end_on, presence: true #:total_price, :status,
   # validates :start_on, :end_on, format: { with: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/ }
   # validates :total_price, numericality: true
 
-  has_many :booking_payments, dependent: :destroy, :inverse_of => :account
+  belongs_to :account
+  accepts_nested_attributes_for :account
+
+  belongs_to :board
+  accepts_nested_attributes_for :board
+
+  belongs_to :schedule
+  accepts_nested_attributes_for :schedule
+
+  belongs_to :owner
+  accepts_nested_attributes_for :owner
+
+  belongs_to :customer
+  accepts_nested_attributes_for :customer
+
+  has_many :board_payments, dependent: :destroy
+  accepts_nested_attributes_for :board_payments
+
+  validates :schedule_id, presence: true
+
+  has_many :booking_payments, dependent: :destroy
   accepts_nested_attributes_for :booking_payments
 
   # enum status: [:pending, :completed, :cancelled]

@@ -1,7 +1,8 @@
 class OwnersController < ApplicationController
   def index
     @user= current_user
-    @bookings = Booking.all
+    @owner = Owner.all
+    # @bookings = Booking.all
     # @my_bookings = @user.bookings
   end
 

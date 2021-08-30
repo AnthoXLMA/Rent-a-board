@@ -4,14 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :boards
-  has_many :board_requests, through: :boards, source: :bookings
+  has_one :account
+  # has_many :boards
+  # has_many :board_requests, through: :boards, source: :bookings
 
-  has_many :owners, dependent: :destroy
-  # accepts_nested_attributes_for :users
+  # has_many :owners, dependent: :destroy
+  # # accepts_nested_attributes_for :users
 
-  has_many :bookings
-  has_many :reviews
+  # has_many :bookings
+  # has_many :reviews
 
   has_one_attached :photo
 

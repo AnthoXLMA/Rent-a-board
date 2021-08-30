@@ -8,9 +8,6 @@ class Customer < ApplicationRecord
   belongs_to :account
   accepts_nested_attributes_for :account
 
-  has_many :customers, dependent: :destroy
-  accepts_nested_attributes_for :customers
-
   has_many :bookings, dependent: :destroy
   accepts_nested_attributes_for :bookings
 

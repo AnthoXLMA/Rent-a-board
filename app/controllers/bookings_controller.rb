@@ -25,9 +25,23 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+      @booking = Booking.find(params[:id])
+      @booking.status = 'accepted'
+      @booking.save
+      redirect_to owner_bookings_path
+  end
+
+  def refuse
+    @booking = booking.find(params[:id])
+    @booking.status = 'refused'
+    @booking.save
+    redirect_to owner_bookings_path
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:start_on, :end_on, :total_price, :board_id, :user_id)
+    params.require(:booking).permit(:start_on, :end_on, :total_price, :board_id, :user_id, :schedule_id)
   end
 end
