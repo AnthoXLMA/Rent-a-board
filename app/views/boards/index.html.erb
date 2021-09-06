@@ -13,11 +13,10 @@
       <div class="boards-cards">
         <div class="user-infos">
           <div class="user-details">
-            <%= board.user.first_name %><br>
-            <%= board.user.location %>
+            <%= board.owner.first_name %><br>
+            <%= board.owner.address %><br>
           </div>
           <div class="user-photo">
-            <img style="background-image: url('<%= cl_image_path board.user.photo.key %>')"><br>
           </div>
         </div>
           <hr style="width:90%", size="5", color=black>
@@ -40,7 +39,7 @@
             <%= link_to "Voir plus", board_path(board) %>
           </div>
           <div class="btn btn-warning">
-            <%= link_to "Contact", board.user %>
+            <%= link_to "Contact", board.owner %>
           </div>
         </div>
         </div>

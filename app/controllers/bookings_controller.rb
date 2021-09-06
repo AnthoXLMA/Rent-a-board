@@ -5,20 +5,16 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @board = Board.find(params[:id])
-    @booking = Booking.new(booking_params)
+    @board = Board.find(params[:board_id])
+    @booking = Booking.new
+    @booking.board = @booking
     @booking.save
-    @board_booking = @board.booking
-    @board_booking.save
   end
 
   def create
+    @board = Board.find(params[:board_id])
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    # @owner = User.find(params[:id])
-    # @board = Board.find(params[:board_id])
-    # @rental.total_price = ((@rental.end_on - @rental.start_on) / 86_400) * @tree.price
-    @booking.board = @board
+    # @booking.board = @booking.account
     @booking.save
       redirect_to bookings_path
   end
@@ -40,6 +36,8 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_on, :end_on, :total_price, :board_id, :user_id, :schedule_id)
+    params.require(:booking).permit(
+      :id, :start_on, :end_on, :total_price, :created_at, :updated_at, :status,
+      :user_id, :board_id, :schedule_id, :account_id, :customer_id, :owner_id)
   end
 end

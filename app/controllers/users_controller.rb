@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     @user = User.new
     @user.save
     @account = Account.new
-    # @user = User.new
-    @client = Client.new
+    @customer = Customer.new
     @booking = Booking.new
     @board_payment = BoardPayment.new
     @schedules = Schedule.where('start >= ? and start <=  ?', Date.today + 1.day, Date.today + 2.weeks).where(title: 'Available').order('start ASC').all

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # has_one :account
+  has_one :account
   has_many :boards
   # has_many :board_requests, through: :boards, source: :bookings
 
