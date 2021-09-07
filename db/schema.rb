@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_accounts_on_user_id"
-  end
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -59,10 +52,8 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.integer "cost"
     t.string "service"
     t.integer "booking_id"
-    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_board_payments_on_account_id"
     t.index ["booking_id"], name: "index_board_payments_on_booking_id"
   end
 
@@ -101,10 +92,8 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
     t.bigint "schedule_id"
-    t.bigint "account_id"
     t.bigint "customer_id", null: false
     t.bigint "owner_id", null: false
-    t.index ["account_id"], name: "index_bookings_on_account_id"
     t.index ["board_id"], name: "index_bookings_on_board_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["owner_id"], name: "index_bookings_on_owner_id"
@@ -116,8 +105,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.bigint "account_id", null: false
-    t.index ["account_id"], name: "index_customers_on_account_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
@@ -128,10 +115,8 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.integer "cost"
     t.string "service"
     t.integer "booking_id"
-    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_lesson_payments_on_account_id"
     t.index ["booking_id"], name: "index_lesson_payments_on_booking_id"
   end
 
@@ -147,8 +132,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.string "password"
     t.string "phone_number"
     t.bigint "user_id", null: false
-    t.bigint "account_id", null: false
-    t.index ["account_id"], name: "index_owners_on_account_id"
     t.index ["user_id"], name: "index_owners_on_user_id"
   end
 
@@ -164,9 +147,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.datetime "start"
     t.datetime "end"
     t.integer "owner_id"
-    t.integer "account_id"
-    t.index ["account_id"], name: "index_schedules_on_account_id"
-    t.index ["owner_id"], name: "index_schedules_on_owner_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -192,7 +172,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "board_bookings", "boards"
   add_foreign_key "board_bookings", "bookings"
@@ -200,14 +179,11 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
   add_foreign_key "boards", "owners"
   add_foreign_key "boards", "suppliers"
   add_foreign_key "boards", "users"
-  add_foreign_key "bookings", "accounts"
   add_foreign_key "bookings", "boards"
   add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "owners"
   add_foreign_key "bookings", "schedules"
   add_foreign_key "bookings", "users"
-  add_foreign_key "customers", "accounts"
   add_foreign_key "customers", "users"
-  add_foreign_key "owners", "accounts"
   add_foreign_key "owners", "users"
 end

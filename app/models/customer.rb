@@ -5,9 +5,6 @@ class Customer < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :user
 
-  belongs_to :account
-  accepts_nested_attributes_for :account
-
   has_many :bookings, dependent: :destroy
   accepts_nested_attributes_for :bookings
 
