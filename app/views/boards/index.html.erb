@@ -5,7 +5,7 @@
 <div class="container-body">
   <% @owners.each do |owner| %>
   <%= owner.id %>
-  <%= owner.account.user.first_name %>
+  <%= owner.user.first_name %>
   <%end%>
   <p>Heure locale <%= Time.now %> <%= Date.today %><p>
   <div class="index-boards-cards">
@@ -13,8 +13,9 @@
       <div class="boards-cards">
         <div class="user-infos">
           <div class="user-details">
-            <%= board.owner.first_name %><br>
-            <%= board.owner.address %><br>
+            <%= board.owner.user.first_name %><br>
+            <%= board.owner.user.location %><br>
+            <%= board.owner.user.phone_number %><br>
           </div>
           <div class="user-photo">
           </div>

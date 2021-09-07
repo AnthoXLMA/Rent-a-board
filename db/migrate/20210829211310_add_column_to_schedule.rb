@@ -5,7 +5,5 @@ class AddColumnToSchedule < ActiveRecord::Migration[6.0]
     add_column :schedules, :end, :datetime
     add_column :schedules, :owner_id, :integer
     add_index :schedules, :owner_id
-    add_column :schedules, :account_id, :integer
-    add_index :schedules, :account_id
   end
 end

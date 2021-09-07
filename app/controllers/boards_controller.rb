@@ -1,6 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :index]
-  # before_action :set_board, only: [:show]
+  before_action :set_board, only: [:show]
 
   def index
     @user = current_user
@@ -15,11 +14,12 @@ class BoardsController < ApplicationController
 
   def create
     @user = current_user
+    @owner = @user
     @board = Board.new(board_params)
+    @board.user_id = @owner
     @board_photo = @board.photo
-    @board.user = @user
-      @board.save
-        redirect_to boards_path(@boards)
+    @board.save
+      redirect_to boards_path(@board)
   end
 
   def show
@@ -41,10 +41,11 @@ class BoardsController < ApplicationController
 
   def set_board
     @boards = Board.all
+    # @board = Board.find(params[:id])
   end
 
   def board_params
-    params.require(:board).permit(:name, :size, :brand, :price, :contact,
-    :description, :supplier_id, :address, :user_id, :photo, :guarantee_amount, :shape)
+    params.require(:board).permit(:name, :size, :brand, :shape, :guarantee_amount, :price, :contact,
+    :description, :supplier_id, :address, :user_id, :owner_id, :photo)
   end
 end

@@ -4,7 +4,6 @@ Booking.delete_all
 Board.delete_all
 Supplier.delete_all
 Owner.delete_all
-Account.delete_all
 User.delete_all
 
 
@@ -42,43 +41,43 @@ jorge = User.new(
 jorge.photo.attach(io: File.open(Rails.root.join('db/fixtures/users/rza.jpg')), filename: 'rza.jpg')
 jorge.save!
 
-puts 'CREATING ACCOUNTS'
-account1 = Account.new(
-  created_at: "21-10-2021",
-  updated_at: "22-10-2021",
-  user_id: anthony.id
-  )
-account1.save!
+# puts 'CREATING ACCOUNTS'
+# account1 = Account.new(
+#   created_at: "21-10-2021",
+#   updated_at: "22-10-2021",
+#   user_id: anthony.id
+#   )
+# account1.save!
 
-account2 = Account.new(
-  created_at: "01-10-2021",
-  updated_at: "02-10-2021",
-  user_id: jean.id
-  )
-account2.save!
+# account2 = Account.new(
+#   created_at: "01-10-2021",
+#   updated_at: "02-10-2021",
+#   user_id: jean.id
+#   )
+# account2.save!
 
-account3 = Account.new(
-  created_at: "21-09-2021",
-  updated_at: "22-11-2021",
-  user_id: jorge.id
-  )
-account3.save!
+# account3 = Account.new(
+#   created_at: "21-09-2021",
+#   updated_at: "22-11-2021",
+#   user_id: jorge.id
+#   )
+# account3.save!
 
 puts 'CREATING OWNERS'
 anthony = Owner.new(
-  account_id: account1.id,
+  # account_id: account1.id,
   user_id: anthony.id
   )
 anthony.save!
 
 jean = Owner.new(
-  account_id: account2.id,
+  # account_id: account2.id,
   user_id: jean.id
   )
 jean.save!
 
 jorge = Owner.new(
-  account_id: account3.id,
+  # account_id: account3.id,
   user_id: jorge.id
   )
 jorge.save!
@@ -86,19 +85,19 @@ jorge.save!
 puts 'CREATING CUSTOMERS'
 anthony = Customer.new(
   user_id: anthony.id,
-  account_id: account1.id
+  # account_id: account1.id
   )
 anthony.save!
 
 jean = Customer.new(
   user_id: jean.id,
-  account_id: account2.id
+  # account_id: account2.id
   )
 jean.save!
 
 jorge = Customer.new(
   user_id: jorge.id,
-  account_id: account3.id
+  # account_id: account3.id
   )
 jorge.save!
 
@@ -106,7 +105,7 @@ puts 'CREATING SCHEDULES'
 agenda1 = Schedule.new(
   created_at: "20-12-2021",
   updated_at: "22-12-2021",
-  account_id: account1.id,
+  # account_id: account1.id,
   owner_id: anthony.id
   )
 agenda1.save!
@@ -214,7 +213,7 @@ astral_loc = Booking.new(
  # status: status.value,
  user_id: jean.id,
  board_id: astralwave.id,
- account_id:account3.id,
+ # account_id:account3.id,
  owner_id:jean.id,
  customer_id: jorge.id,
  schedule_id:agenda1.id
