@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    before_action :set_user, only: [:show]
   def index
     @user = user_current
     @users = User.all
@@ -19,27 +19,27 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # @user.save
-  end
-
-  def create
-    @user = User.new
     @user.save
   end
 
-  def accept
-    @booking = Booking.find(params[:id])
-    @booking.status = 'accepted'
-    @booking.save
-    redirect_to owner_bookings_path
+  def create
+    @user = User.new(user_params)
+    @user.save
   end
 
-  def refuse
-    @booking = booking.find(params[:id])
-    @booking.status = 'refused'
-    @booking.save
-    redirect_to owner_bookings_path
-  end
+  # def accept
+  #   @booking = Booking.find(params[:id])
+  #   @booking.status = 'accepted'
+  #   @booking.save
+  #   redirect_to owner_bookings_path
+  # end
+
+  # def refuse
+  #   @booking = booking.find(params[:id])
+  #   @booking.status = 'refused'
+  #   @booking.save
+  #   redirect_to owner_bookings_path
+  # end
 
 private
 

@@ -1,6 +1,6 @@
 <div class="container-body">
   <div class="container-one-board">
-    <h1><%= @board.name %><br></h1>by <%= link_to @board.owner.first_name, @board.owner %>
+    <h1><%= @board.name %><br></h1>by <%= link_to @board.user.first_name, @board.user %>
     <%= cl_image_tag @board.photo.key %>
     <div class="board-details">
       <a><%= @board.brand %><br></a>

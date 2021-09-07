@@ -14,12 +14,11 @@ class BoardsController < ApplicationController
 
   def create
     @user = current_user
-    @owner = @user
     @board = Board.new(board_params)
-    @board.user_id = @owner
-    @board_photo = @board.photo
+    @board.user = @user
+    # @board_photo = @board.photo
     @board.save
-      redirect_to boards_path(@board)
+      redirect_to boards_path(@boards)
   end
 
   def show
@@ -41,7 +40,7 @@ class BoardsController < ApplicationController
 
   def set_board
     @boards = Board.all
-    # @board = Board.find(params[:id])
+    @board = Board.find(params[:id])
   end
 
   def board_params

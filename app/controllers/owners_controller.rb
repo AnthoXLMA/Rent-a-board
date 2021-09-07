@@ -1,4 +1,6 @@
 class OwnersController < ApplicationController
+    before_action :set_owner, only: [:show]
+
   def index
     @user= current_user
     @owners = Owner.all
@@ -22,5 +24,14 @@ class OwnersController < ApplicationController
     @booking.status = 'refused'
     @booking.save
     redirect_to owner_bookings_path
+  end
+  private
+
+  def set_owner
+    @owner = Owner.find(params[:id])
+  end
+
+  def user_params
+    params.require(:owner).permit(:user_id)
   end
 end

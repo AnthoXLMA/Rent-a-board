@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
   resources :boards, only: [:index, :show, :new, :create] do
-    resources :owners, only: [:index, :show]
+    resources :users, only: [:index, :show]
   end
 
   namespace :owner do
