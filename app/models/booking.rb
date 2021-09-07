@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
   belongs_to :board, inverse_of: :bookings
   # has_and_belongs_to_many :boards, join_table: 'board_bookings'
   # validates :start_on, :end_on, presence: true #:total_price, :status,

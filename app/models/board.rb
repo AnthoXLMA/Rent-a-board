@@ -1,13 +1,14 @@
 class Board < ApplicationRecord
-  belongs_to :owner
-  belongs_to :supplier
+  belongs_to :user
+  # belongs_to :owner
+  # belongs_to :supplier
 
   has_many :customers, through: :bookings
 
   has_many :bookings
-  has_and_belongs_to_many :bookings
+  # has_and_belongs_to_many :bookings
 
-  has_many :reviews
+  # has_many :reviews
 
   has_one_attached :photo
 
