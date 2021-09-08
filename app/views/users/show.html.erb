@@ -22,28 +22,30 @@
             </div>
               <% end %>
           <p>Mes locations</p>
-            <% @user.bookings.each do |booking| %>
+            <% @my_rentals.each do |rental| %>
             <div class="booking-ticket">
-              <p><%= booking.board.name %></p>
-            </div>
-              <% end %>
-              <% @my_rentals.each do |rental| %>
               <%= rental.name %>
+              <% rental.bookings.each do |rental_booking| %>
+              <%= rental_booking.user.first_name %>
+              <%= rental_booking.start_on %>
+              <%= rental_booking.end_on %>
+              <% end %>
+            </div>
               <% end %>
           <p>Portefeuille</p>
           <% else %>
-        <%= "you have to login to meet this member" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="container-all-boards">
-    <% @user.boards.each do |user_board| %>
+            <%= "you have to login to meet this member" %>
+          <% end %>
+        </div>
+      </div>
+    <div class="container-all-boards">
+      <% @user.boards.each do |user_board| %>
     <div class="boards-cards">
-      <%= user_board.name %>
-      <%= user_board.description %>
-      <%= user_board.address %>
-      <%= user_board.size %>"
-      <%= user_board.price %>€
+      <a><%= user_board.name %></a><br>
+      <a><%= user_board.description %></a><br>
+      <a><%= user_board.address %></a><br>
+      <a><%= user_board.size %>"</a><br>
+      <a><%= user_board.price %>€</a><br>
       <div class="image-sizing">
         <img src="<%= cl_image_path user_board.photo.key %>">
       </div>
