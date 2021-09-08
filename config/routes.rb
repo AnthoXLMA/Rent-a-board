@@ -31,9 +31,9 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :owners do
-    resources :boards, only: [:index]
-    resources :bookings, only: [:index] do
+  namespace :users do
+    resources :boards, only: [:index, :new, :create, :show]
+    resources :bookings, only: [:index, :new, :create, :show] do
       member do
         patch :accept
         patch :refuse
