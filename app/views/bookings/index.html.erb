@@ -10,7 +10,7 @@
         <p>TYPE:<%= booking.board.shape %></p>
         <p>DEBUT: <%= booking.start_on.strftime("%d %m %Y") %></p>
         <p>FIN: <%= booking.end_on.strftime("%d %m %Y") %></p>
-        <p>OWNER: <%= booking.board.owner.first_name %></p>
+        <p>OWNER: <%= booking.board.user.first_name %></p>
         <p>MONTANT: <%= booking.total_price %>$</p>
         <% if booking.status == "accepted" %>
           <h2 style="background-color: green opacity:0.9"> <%= booking.status %></h2>

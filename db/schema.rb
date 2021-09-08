@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 2021_08_30_133220) do
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
     t.bigint "schedule_id"
-    t.bigint "customer_id", null: false
-    t.bigint "owner_id", null: false
+    t.bigint "customer_id", null: true
+    t.bigint "owner_id", null: true
     t.index ["board_id"], name: "index_bookings_on_board_id"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["owner_id"], name: "index_bookings_on_owner_id"

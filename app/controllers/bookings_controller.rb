@@ -5,18 +5,18 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @board = Board.find(params[:board_id])
     @booking = Booking.new
-    @booking.board = @booking
     @booking.save
   end
 
   def create
-    @board = Board.find(params[:board_id])
     @booking = Booking.new(booking_params)
-    # @booking.board = @booking.account
+    @booking.user = current_user
+    @board = Board.find(params[:board_id])
+    # @booking.board = @board
+    #saving the booking
     @booking.save
-      redirect_to bookings_path
+      redirect_to bookings_path(@bookings)
   end
 
   def accept
@@ -38,6 +38,6 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(
       :id, :start_on, :end_on, :total_price, :created_at, :updated_at, :status,
-      :user_id, :board_id, :schedule_id, :account_id, :customer_id, :owner_id)
+      :user_id, :board_id, :schedule_id, :owner_id)
   end
 end
