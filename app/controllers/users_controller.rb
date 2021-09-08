@@ -21,6 +21,9 @@ class UsersController < ApplicationController
     @my_bookings = @user_rentals.each do |my_rental|
       @my_rentals << my_rental.board
     end
+    @customer = @my_rentals.each do |a_rental|
+      a_rental
+    end
   end
 
   def new

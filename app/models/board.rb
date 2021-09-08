@@ -6,8 +6,6 @@ class Board < ApplicationRecord
   has_many :bookings
   # has_and_belongs_to_many :bookings
 
-  # has_many :reviews
-
   has_one_attached :photo
 
   AVAILABILITY = ['Available', 'Booked', 'Over']
