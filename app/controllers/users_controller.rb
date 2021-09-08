@@ -14,7 +14,13 @@ class UsersController < ApplicationController
     @board_photo = @boards.each do |board|
       board.photo
     end
+    #créer une liste de réservations pour le propriétaire
     @bookings = Booking.all
+    @user_rentals = @bookings.where(board_id: @user.board_ids)
+    @my_rentals = []
+    @my_bookings = @user_rentals.each do |my_rental|
+      @my_rentals << my_rental.board
+    end
   end
 
   def new

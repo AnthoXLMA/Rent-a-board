@@ -11,7 +11,7 @@
   </div>
     <div class="user-actions">
       <% if user_signed_in? %>
-        <p>Agenda des réservations</p>
+        <p>Mes réservations</p>
           <% @user.bookings.each do |booking| %>
             <div class="booking-ticket">
               <p><%= booking.board.name %></p>
@@ -21,15 +21,14 @@
               <p><%= booking.board.user.location %></p>
             </div>
               <% end %>
-          <p>Demandes</p>
-            <% @board.bookings.each do |booking| %>
+          <p>Mes locations</p>
+            <% @user.bookings.each do |booking| %>
             <div class="booking-ticket">
               <p><%= booking.board.name %></p>
-              <p><%= booking.board.user.first_name %></p>
-              <p><%= booking.start_on %></p>
-              <p><%= booking.end_on %></p>
-              <p><%= booking.board.user.location %></p>
             </div>
+              <% end %>
+              <% @my_rentals.each do |rental| %>
+              <%= rental.name %>
               <% end %>
           <p>Portefeuille</p>
           <% else %>
