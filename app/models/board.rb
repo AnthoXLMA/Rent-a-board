@@ -1,7 +1,5 @@
 class Board < ApplicationRecord
   belongs_to :user
-  # belongs_to :owner
-  # belongs_to :supplier
 
   has_many :customers, through: :bookings
 

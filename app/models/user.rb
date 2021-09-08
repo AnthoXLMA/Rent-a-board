@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards
-  # has_many :board_requests, through: :boards, source: :bookings
+  has_many :bookings
+  # has_many :board_bookings, through: :boards, source: :bookings
 
   has_one :owner, dependent: :destroy
   accepts_nested_attributes_for :owner
 
-  has_many :bookings
   # has_many :reviews
 
   has_one_attached :photo

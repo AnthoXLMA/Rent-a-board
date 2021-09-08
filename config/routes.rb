@@ -5,31 +5,33 @@ Rails.application.routes.draw do
     delete '/users/sign_out' => 'devise/sessions#destroy'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :boards, only: [:index, :new, :create, :show] do
-    resources :bookings, only: [:new, :create]
+  resources :users, only: [:index, :new, :create, :show] do
+    resources :boards, only: [:index, :new, :create, :show]
   end
-
-  resources :users, only: [:show] do
-    resources :bookings, only: [:index, :new, :create]
-  end
-
-  resources :bookings, only: [:index, :new, :create]
-
-  resources :users, only: [:show] do
-      resources :boards, only: [:index, :create, :show] do
-        resources :board_bookings, only: [:index, :create, :show]
-      end
-    end
-
-    resources :owners, only: [:show] do
-      resources :boards, only: [:show]
-    end
 
   resources :boards, only: [:index, :show, :new, :create] do
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :new, :create, :show]
   end
 
-  namespace :owner do
+  resources :boards, only: [:index, :new, :create, :show] do
+    resources :bookings, only: [:index, :new, :create, :show]
+  end
+
+  resources :users, only: [:index, :new, :create, :show] do
+    resources :bookings, only: [:index, :new, :create, :show]
+  end
+
+  resources :bookings, only: [:index, :new, :create, :show] do
+    resources :users, only: [:index, :new, :create, :show]
+  end
+
+  resources :users, only: [:index, :new, :create, :show] do
+      resources :boards, only: [:index, :new, :create, :show] do
+        resources :bookings, only: [:index, :new, :create, :show]
+    end
+  end
+
+  namespace :owners do
     resources :boards, only: [:index]
     resources :bookings, only: [:index] do
       member do
@@ -38,5 +40,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end
