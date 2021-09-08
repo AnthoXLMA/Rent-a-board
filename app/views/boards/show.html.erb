@@ -12,7 +12,7 @@
   </div>
   hello
   <div class="container">
-  <%= simple_form_for [@board, @booking] do |f| %>
+  <%= simple_form_for [@board, @booking], remote: true do |f| %>
     <div class="container_one">
       <%= f.collection_select :board_id, Board.all, :id, :name %>
       <%= f.input :start_on, as: :date %>

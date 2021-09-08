@@ -11,7 +11,7 @@
   </div>
     <div class="user-actions">
       <% if user_signed_in? %>
-        <h1>my bookings</h1>
+        <p>Agenda des réservations</p>
           <% @user.bookings.each do |booking| %>
             <div class="booking-ticket">
               <p><%= booking.board.name %></p>
@@ -21,8 +21,17 @@
               <p><%= booking.board.user.location %></p>
             </div>
               <% end %>
-          <h1>my rentals</h1>
-          <h1>my wallet</h1>
+          <p>Demandes</p>
+            <% @board.bookings.each do |booking| %>
+            <div class="booking-ticket">
+              <p><%= booking.board.name %></p>
+              <p><%= booking.board.user.first_name %></p>
+              <p><%= booking.start_on %></p>
+              <p><%= booking.end_on %></p>
+              <p><%= booking.board.user.location %></p>
+            </div>
+              <% end %>
+          <p>Portefeuille</p>
           <% else %>
         <%= "you have to login to meet this member" %>
       <% end %>
