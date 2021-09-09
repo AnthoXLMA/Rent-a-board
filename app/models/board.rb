@@ -1,7 +1,7 @@
 class Board < ApplicationRecord
   belongs_to :user
 
-  has_many :customers, through: :bookings
+  # has_many :customers, through: :bookings
 
   has_many :bookings
   # has_and_belongs_to_many :bookings

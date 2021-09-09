@@ -1,6 +1,6 @@
-<div class="container-body">
-  <div class="container-one-board">
-    <h1><%= @board.name %><br></h1>by <%= link_to @board.user.first_name, @board.user %>
+    <h1 style="margin-left:100px;"><%= @board.name %><br>by <%= link_to @board.user.first_name, @board.user %></h1>
+<div class="container-body" style="display:flex; margin-left:50px;">
+  <div class="container-one-board" >
     <%= cl_image_tag @board.photo.key %>
     <div class="board-details">
       <a><%= @board.brand %><br></a>
@@ -10,8 +10,7 @@
       <a><%= @board.address %><br></a>
     </div>
   </div>
-  hello
-  <div class="container">
+  <div class="container" style="padding:20px;box-shadow: 2px 2px 10px 2px grey; margin-right:100px; border-radius:5px 5px 5px 5px;">
   <%= simple_form_for [@board, @booking], remote: true do |f| %>
     <div class="container_one">
       <%= f.collection_select :board_id, Board.all, :id, :name %>
@@ -21,7 +20,4 @@
     </div>
     <% end %>
   </div>
-  <br>
-      <%= link_to board_url(:board_id => @board.id), class: "btn btn-primary" do %>
-      <i class="fa fa-calendar-plus-o"></i>Rent this board<% end %>
 </div>
