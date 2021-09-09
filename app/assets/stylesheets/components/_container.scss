@@ -15,7 +15,7 @@
 
 .container-body {
   margin-bottom:100px;
-  margin-top:90px;
+  margin-top:20px;
   z-index:0;
   .index-boards-cards {
     position:sticky;
@@ -27,7 +27,9 @@
     grid-gap: 20px;
   }
   .container-one-board {
-    margin-top:175px;
+    margin-top:15px;
+    margin-left:20px;
+    display:flex;
     img {
         width:30%;
         background-size:cover;
@@ -39,22 +41,23 @@
   width:1300px;
   height:auto;
   background-color: white;
-  margin-top:40px;
+  margin-top:10px;
   margin-right:auto;
   margin-left:auto;
   margin-bottom:10px;
   display:flex;
   justify-content:space-between;
+  // box-shadow: 2px 2px 10px 2px grey;
   .container-user-infos {
     background-color: white;
-    width:auto;
+    width:400px;
     height: 100%;
     margin-left:20px;
-    margin-top:175px;
+    margin-top:10px;
     margin-bottom:20px;
     padding:20px;
     // position:fixed;
-    box-shadow: 2px 2px 10px 2px grey;
+    // box-shadow: 2px 2px 10px 2px grey;
     border-radius: 2px 2px 2px 2px;
     justify-content:space-between;
     img {
@@ -73,14 +76,23 @@
         // position:fixed;
         // height:800px;
         .booking-ticket {
-          width:250px;
-          box-shadow:0px 2px 8px 0px grey;
+          width:350px;
+          height:160px;
+          // box-shadow:0px 2px 8px 0px grey;
           border-radius: 5px 5px 5px 5px;
+          // background-color: #f72585;
           margin-top:10px;
           padding:10px;
           display:flex;
           p {
             font-size:10px;
+            color: black;
+            font-weight:bold;
+          }
+          a {
+            font-size:10px;
+            color: black;
+            font-weight:bold;
           }
         }
       }
@@ -88,10 +100,11 @@
   .container-all-boards {
     width:850px;
     height:auto;
+    // position:fixed;
     margin-right:20px;
-    // margin-left:550px;
-    margin-top:175px;
-    margin-bottom:auto;
+    margin-left:50px;
+    margin-top:10px;
+    margin-bottom:10px;
     display:grid;
     grid-template-columns: repeat(2, 2fr);
     grid-gap: 5px;

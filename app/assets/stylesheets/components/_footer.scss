@@ -8,8 +8,8 @@
   justify-content: space-between;
   padding: 0px 50px;
   margin-top:-100px;
-  // z-index:1;
-  position:sticky;
+  z-index:1;
+  position:fixed;
   p {
     // font-weight:bold;
     color: white;
